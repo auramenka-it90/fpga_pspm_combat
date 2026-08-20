@@ -1,0 +1,121 @@
+# =============================================================================
+# TIMING CONSTRAINTS
+# =============================================================================
+# Primary 60 MHz input clock (Period = 16.666667 ns)
+NET "clk_60mHz" TNM_NET = "TNM_IN_CLK";
+TIMESPEC "TS_IN_CLK" = PERIOD "TNM_IN_CLK" 16.666667 ns HIGH 50%;
+
+# =============================================================================
+# PHYSICAL PIN CONSTRAINTS (Spartan-6 XC6SLX9-TQG144)
+# =============================================================================
+
+# --- System Clock (60 MHz Oscillator D2 -> GCLK1) ---
+NET "clk_60mHz"                 LOC = "P55"  | IOSTANDARD = LVCMOS33;
+
+# --- Flash Lockout Line (Hardware Lockout: CSO_B Pin 38 driven High in User Mode) ---
+NET "w25q128_nss"               LOC = "P38"  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 4; # Flash CS on Pin 38 (cso)
+
+# =============================================================================
+# STM32 <-> FPGA INTERFACE (Shared SPI + Dual CS + IRQ)
+# =============================================================================
+# SPI Shared Bus (P70 = CCLK Dual-Purpose Pin)
+NET "spi_stm32_sck"             LOC = "P70"  | IOSTANDARD = LVCMOS33; # SCK from STM32 PA5
+NET "spi_stm32_sck"             CLOCK_DEDICATED_ROUTE = FALSE;       # Bypass strict DRC for non-GCLK pin
+
+NET "spi_stm32_mosi"            LOC = "P64"  | IOSTANDARD = LVCMOS33; # MOSI from STM32 PA7 (DQ0)
+NET "spi_stm32_miso"            LOC = "P65"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 12; # MISO to STM32 PA6 (DQ1)
+
+# Independent Chip Select Lines (Dual-Plane Architecture)
+NET "spi_stm32_nss_p"           LOC = "P48"  | IOSTANDARD = LVCMOS33; # CS Polling (STM32 PB0 / MISC0)
+NET "spi_stm32_nss_d"           LOC = "P50"  | IOSTANDARD = LVCMOS33; # CS DMA Burst (STM32 PB2 / MISC2)
+
+# Global Hardware Interrupt to STM32 (Active-Low)
+NET "fpga_2_stm32_interrupt_N"  LOC = "P51"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # IRQ to STM32 PB10 (EXTI10)
+
+# =============================================================================
+# USER STATUS LEDS & DIAGNOSTIC TEST POINTS
+# =============================================================================
+# Status LEDs
+NET "led[0]"                    LOC = "P26"  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 4; # VD35 (Green)
+NET "led[1]"                    LOC = "P27"  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 4; # VD36 (Yellow)
+NET "led[2]"                    LOC = "P29"  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 4; # VD37 (Red)
+
+# Dynamic Multiplexed Test Points (TP5, TP6, TP7) - Fast Slew for Scope Analysis
+NET "tp[5]"                     LOC = "P81"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP5 Output
+NET "tp[6]"                     LOC = "P80"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP6 Output
+NET "tp[7]"                     LOC = "P79"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP7 Output
+
+# =============================================================================
+# 3-PHASE COMPARATOR INPUTS (Zero-Crossing Reference 400 Hz)
+# =============================================================================
+NET "UON12"                     LOC = "P131" | IOSTANDARD = LVCMOS33; # Phase 1-2 Comparator
+NET "UON23"                     LOC = "P132" | IOSTANDARD = LVCMOS33; # Phase 2-3 Comparator
+
+# =============================================================================
+# ADC DA36: RESOLVER SUBSYSTEM (AD7367)
+# =============================================================================
+NET "res_cnvst_n"               LOC = "P118" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CNV3
+NET "res_cs_n"                  LOC = "P117" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CS_ADC3
+NET "res_sclk"                  LOC = "P116" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CLK_ADC3
+NET "res_addr"                  LOC = "P119" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # ADDR3
+NET "res_busy"                  LOC = "P120" | IOSTANDARD = LVCMOS33; # BUSY3
+NET "res_dout_a"                LOC = "P121" | IOSTANDARD = LVCMOS33; # OUTA3
+NET "res_dout_b"                LOC = "P123" | IOSTANDARD = LVCMOS33; # OUTB3
+
+# =============================================================================
+# ADC DA21: ELEVATION SUBSYSTEM (AD7367)
+# =============================================================================
+NET "da21_cnvst_n"              LOC = "P138" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CNV1
+NET "da21_cs_n"                 LOC = "P137" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CS_ADC1
+NET "da21_sclk"                 LOC = "P134" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CLK_ADC1
+NET "da21_addr"                 LOC = "P139" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # ADDR1
+NET "da21_busy"                 LOC = "P140" | IOSTANDARD = LVCMOS33; # BUSY1
+NET "da21_dout_a"               LOC = "P141" | IOSTANDARD = LVCMOS33; # OUTA1
+NET "da21_dout_b"               LOC = "P142" | IOSTANDARD = LVCMOS33; # OUTB1
+
+# =============================================================================
+# ADC DA22: AZIMUTH SUBSYSTEM (AD7367)
+# =============================================================================
+NET "da22_cnvst_n"              LOC = "P127" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CNV2
+NET "da22_cs_n"                 LOC = "P126" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CS_ADC2
+NET "da22_sclk"                 LOC = "P124" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CLK_ADC2
+NET "da22_addr"                 LOC = "P133" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # ADDR2
+NET "da22_busy"                 LOC = "P143" | IOSTANDARD = LVCMOS33; # BUSY2
+NET "da22_dout_a"               LOC = "P1"   | IOSTANDARD = LVCMOS33; # OUTA2
+NET "da22_dout_b"               LOC = "P2"   | IOSTANDARD = LVCMOS33; # OUTB2
+
+# =============================================================================
+# ADC DA45: TELEMETRY 4x DC (AD7367)
+# =============================================================================
+NET "da45_cnvst_n"              LOC = "P111" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CNV4
+NET "da45_cs_n"                 LOC = "P112" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CS_ADC4
+NET "da45_sclk"                 LOC = "P114" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # CLK_ADC4
+NET "da45_addr"                 LOC = "P115" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # ADDR4
+NET "da45_busy"                 LOC = "P105" | IOSTANDARD = LVCMOS33; # BUSY4
+NET "da45_dout_a"               LOC = "P104" | IOSTANDARD = LVCMOS33; # OUTA4
+NET "da45_dout_b"               LOC = "P102" | IOSTANDARD = LVCMOS33; # OUTB4
+
+# =============================================================================
+# DAC SUBSYSTEM (10x AD5543 Multiplying DACs) - All Outputs Packed into IOB
+# =============================================================================
+# Shared Serial Bus
+NET "dac_clk"                   LOC = "P98"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CLK_DAC
+NET "dac_sdi"                   LOC = "P99"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # SDI_DAC
+
+# Individual Chip Selects (Active-Low)
+NET "dac_cs_n[1]"               LOC = "P101" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC1
+NET "dac_cs_n[2]"               LOC = "P97"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC2
+NET "dac_cs_n[3]"               LOC = "P95"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC3
+NET "dac_cs_n[4]"               LOC = "P94"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC4
+NET "dac_cs_n[5]"               LOC = "P93"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC5
+NET "dac_cs_n[6]"               LOC = "P92"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC6
+NET "dac_cs_n[7]"               LOC = "P88"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC7
+NET "dac_cs_n[8]"               LOC = "P87"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC8
+NET "dac_cs_n[9]"               LOC = "P85"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC9
+NET "dac_cs_n[10]"              LOC = "P84"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | IOB = TRUE; # CS_DAC10
+
+# =============================================================================
+# SOURCE-SYNCHRONOUS TIMING FOR DAC SUBSYSTEM (AD5543)
+# =============================================================================
+TIMEGRP "dac_data_group" = PADS("dac_sdi" "dac_cs_n*");
+TIMEGRP "dac_data_group" OFFSET = OUT 2 ns VALID 4 ns AFTER "clk_60mHz" REFERENCE_PIN "dac_clk";

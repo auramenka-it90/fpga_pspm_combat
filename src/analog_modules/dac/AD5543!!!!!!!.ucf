@@ -1,0 +1,12 @@
+
+# 1. Определение базового системного клока (100 МГц = 10 нс)
+NET "clk" TNM_NET = "sys_clk_grp";
+TIMESPEC "TS_sys_clk" = PERIOD "sys_clk_grp" 10 ns HIGH 50%;
+
+# 2. Группировка выходных сигналов данных и управления
+TIMEGRP "dac_data_group" = PADS("dac_sdi" "dac_cs_n");
+
+# 3. Source-Synchronous ограничения относительно сгенерированного клока
+# Синтаксис REFERENCE_PIN указывает ISE анализировать задержки относительно пина dac_clk.
+# Значения (2 ns / 4 ns) берутся из даташита AD5543 (Setup/Hold time, tDS / tDH).
+TIMEGRP "dac_data_group" OFFSET = OUT 2 ns VALID 4 ns BEFORE "clk" REFERENCE_PIN "dac_clk";
