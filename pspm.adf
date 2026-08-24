@@ -37,8 +37,13 @@ RUN_MODE_SYNTH=0
 fileopenfolder=D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\rdc
 SYNTH_STATUS=warnings
 PHYSSYNTH_STATUS=none
+<<<<<<< HEAD
 IMPL_STATUS=warnings
 LAST_IMPL_STATUS=warnings
+=======
+IMPL_STATUS=none
+LAST_IMPL_STATUS=none
+>>>>>>> 1d6f2d24cbe67d013609a4b8d9ae7ddd01dd6f76
 FUNC_LIB=pspm
 RUN_MODE_IMPL=0
 POST_LIB=pspm_post_synthesis
@@ -73,7 +78,11 @@ FAMILY=Xilinx14x SPARTAN6
 DEVICE=6slx9tqg144
 SPEED=-2
 NETLIST=synthesis\pspm_main.ngc
+<<<<<<< HEAD
 LAST_RUN=1787555746
+=======
+LAST_RUN=1787537895
+>>>>>>> 1d6f2d24cbe67d013609a4b8d9ae7ddd01dd6f76
 OUTPUT_NETLIST=IMPLEMENT\TIME_SIM.V
 OUTPUT_SDF=
 IS_BAT_MODE=0
@@ -414,7 +423,11 @@ JOB_DESCRIPTION=SynthesisTask
 SERVERFARM_INCLUDE_INPUT_FILES=*.*
 SERVERFARM_EXCLUDE_INPUT_FILES=log*.*:implement*.*
 JOB_SFM_RESOURCE=
+<<<<<<< HEAD
 LAST_RUN=1787555732
+=======
+LAST_RUN=1787537772
+>>>>>>> 1d6f2d24cbe67d013609a4b8d9ae7ddd01dd6f76
 OUTPUT_NETLIST=synthesis\pspm_main.ngc
 
 [PHYS_SYNTHESIS]
@@ -437,7 +450,10 @@ TOPLEVEL=
 /define.v=-1
 /system_clk_rst.v=-1
 /bist_generator.v=-1
+<<<<<<< HEAD
 /multiboot_icap.v=-1
+=======
+>>>>>>> 1d6f2d24cbe67d013609a4b8d9ae7ddd01dd6f76
 stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v=-1
 stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v=-1
 analog_modules/ad7367_multi_mode.v=-1
@@ -460,7 +476,10 @@ modules/comparator_block.v=-1
 .\src\define.v=Verilog Source Code
 .\src\system_clk_rst.v=Verilog Source Code
 .\src\bist_generator.v=Verilog Source Code
+<<<<<<< HEAD
 .\src\multiboot_icap.v=Verilog Source Code
+=======
+>>>>>>> 1d6f2d24cbe67d013609a4b8d9ae7ddd01dd6f76
 .\src\stm32_2_fpga_spi_bridge\spi_stm32_fpga_bridge.v=Verilog Source Code
 .\src\stm32_2_fpga_spi_bridge\spi_stm32_multi_word_bridge.v=Verilog Source Code
 .\src\analog_modules\ad7367_multi_mode.v=Verilog Source Code

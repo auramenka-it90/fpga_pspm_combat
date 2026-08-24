@@ -1,7 +1,11 @@
 #Release 14.7 - par P.20131013 (nt64)
 #Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
+<<<<<<< HEAD
 #Mon Aug 24 10:16:31 2026
+=======
+#Thu Aug 20 18:06:09 2026
+>>>>>>> 1d6f2d24cbe67d013609a4b8d9ae7ddd01dd6f76
 
 #
 ## NOTE: This file is designed to be imported into a spreadsheet program
