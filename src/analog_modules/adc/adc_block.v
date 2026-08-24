@@ -6,48 +6,16 @@
 // 
 // DESCRIPTION:
 //  Combined ADC Subsystem for DA21 (Elevation), DA22 (Azimuth), and DA45 (Telemetry).
-//  - DA21 (Hybrid AC/DC) is synchronized to UON23. Updates shadow regs silently.
-//  - DA22 (Hybrid AC/DC) is synchronized to UON12. Generates the main IRQ.
-//  - DA45 (4x DC) runs on internal decimation timer. Updates shadow regs silently.
+//  - DA21 (Hybrid AC/DC) is synchronized to UON23. Generates the main Master IRQ!
+//  - DA22 (Hybrid AC/DC) is synchronized to UON12. Updates shadow regs silently.
+//  - DA45 (4x DC) runs on internal decimation timer (N=7 -> 128 samples = 1.28 ms).
 //
 //  SMART AUTO-CLEAR: The 'dma_ack' input automatically clears the IRQ flags 
 //  when the STM32 finishes reading the DMA burst, eliminating SPI overhead.
-// =============================================================================
-//                          SPI CPU REGISTER ADDRESS MAP
-// =============================================================================
-// 0x00 | REG_CTRL      | [RW] B15: IRQ_ACK, B14: IRQ_EN_12, B1: AC_SEL_DA22, B0: AC_SEL_DA21
-// 0x01 | REG_STATUS    | [RO] B2: VALID_DA45, B1: VALID_DA22, B0: VALID_DA21
-// --- DA21 (UON23) ---
-// 0x02 | DA21_AC_SAMP  | [RO] 16-bit AC Sample Count
-// 0x03 | DA21_AC_CH1_L | [RO] 32-bit AC Channel 1 (Low Word)
-// 0x04 | DA21_AC_CH1_H | [RO] 32-bit AC Channel 1 (High Word)
-// 0x05 | DA21_AC_CH2_L | [RO] 32-bit AC Channel 2 (Low Word)
-// 0x06 | DA21_AC_CH2_H | [RO] 32-bit AC Channel 2 (High Word)
-// 0x07 | DA21_DC_CH1   | [RO] 16-bit DC Channel 1
-// 0x08 | DA21_DC_CH2   | [RO] 16-bit DC Channel 2
-// --- DA22 (UON12) ---
-// 0x09 | DA22_AC_SAMP  | [RO] 16-bit AC Sample Count
-// 0x0A | DA22_AC_CH1_L | [RO] 32-bit AC Channel 1 (Low Word)
-// 0x0B | DA22_AC_CH1_H | [RO] 32-bit AC Channel 1 (High Word)
-// 0x0C | DA22_AC_CH2_L | [RO] 32-bit AC Channel 2 (Low Word)
-// 0x0D | DA22_AC_CH2_H | [RO] 32-bit AC Channel 2 (High Word)
-// 0x0E | DA22_DC_CH1   | [RO] 16-bit DC Channel 1
-// 0x0F | DA22_DC_CH2   | [RO] 16-bit DC Channel 2
-// --- DA45 (Telemetry) ---
-// 0x10 | DA45_DC_CH1   | [RO] 16-bit DC Channel 1
-// 0x11 | DA45_DC_CH2   | [RO] 16-bit DC Channel 2
-// 0x12 | DA45_DC_CH3   | [RO] 16-bit DC Channel 3
-// 0x13 | DA45_DC_CH4   | [RO] 16-bit DC Channel 4
-// --- CONFIGURATION ---
-// 0x14 | REG_DECIMATION| [RW] Dynamic Decimation Shift Control
-//                      | Bits [14:10] : DA45 Shift (Default: 12 -> 4096 samples)
-//                      | Bits [9:5]   : DA22 Shift (Default: 6  -> 64 samples)
-//                      | Bits [4:0]   : DA21 Shift (Default: 6  -> 64 samples)
-// =============================================================================
-//                             DMA FLAT BUS MAPPING
-// =============================================================================
-// Total: 288 bits (18 words). 
-// Order: [0..3] DA45, [4..10] DA22, [11..17] DA21
+//
+//  Target Silicon: Xilinx Spartan-6 (XC6SLX9-TQG144)
+//  Toolchain:      ISE 14.7 / XST
+//  All comments in ASCII English.
 // =============================================================================
 
 module adc_block #(
@@ -67,7 +35,7 @@ module adc_block #(
 
     // --- DMA Interface ---
     output wire [287:0]         adc_data_out,
-    output wire                 irq_adc12_ready,
+    output wire                 irq_adc12_ready, // Master 400 Hz Data Ready IRQ
     input  wire                 dma_ack, 
 
     // --- Synchronization Inputs ---
@@ -324,7 +292,8 @@ module adc_block #(
         end
     end
 
-    assign irq_adc12_ready = hw_valid_da22 & reg_irq_en_12;
+    // Master 400 Hz Data Ready IRQ: now driven by DA21 (synced to UON23)
+    assign irq_adc12_ready = hw_valid_da21 & reg_irq_en_12;
 
     // =========================================================================
     // 6. POLLING READ MULTIPLEXER

@@ -1,5 +1,5 @@
 set -tmpdir .
-set -xsthdpdir "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst"
+set -xsthdpdir "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst"
 run
 -ifn pspm_main.prj
 -ifmt mixed

@@ -44,7 +44,7 @@ NET "led[2]"                    LOC = "P29"  | IOSTANDARD = LVCMOS33 | SLEW = SL
 NET "tp[5]"                     LOC = "P81"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP5 Output
 NET "tp[6]"                     LOC = "P80"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP6 Output
 NET "tp[7]"                     LOC = "P79"  | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP7 Output
-NET "tp[8]"                     LOC = "P8"   | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP7 Output
+#NET "tp[8]"                     LOC = "P8"   | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8; # TP7 Output
 
 # =============================================================================
 # 3-PHASE COMPARATOR INPUTS (Zero-Crossing Reference 400 Hz)

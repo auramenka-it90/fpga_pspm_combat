@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.10 secs
  
---> Parameter xsthdpdir set to D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst
+--> Parameter xsthdpdir set to d:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> 
 TABLE OF CONTENTS
@@ -202,23 +202,23 @@ Elaborating module <ad5543_dac_ctrl(CLK_DIV=5)>.
 
 Synthesizing Unit <pspm_main>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v".
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 155: Output port <busy> of the instance <u_spi_config> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 210: Output port <busy> of the instance <u_spi_dma> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 340: Output port <da21_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 340: Output port <da21_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 340: Output port <da22_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 340: Output port <da22_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 340: Output port <da45_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 340: Output port <da45_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 397: Output port <data_ready> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 397: Output port <range0> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 397: Output port <range1> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 156: Output port <busy> of the instance <u_spi_config> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 211: Output port <busy> of the instance <u_spi_dma> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da21_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da21_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da22_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da22_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da45_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da45_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 399: Output port <data_ready> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 399: Output port <range0> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 399: Output port <range1> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_monitor_div2>.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<5>> created at line 517.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<6>> created at line 518.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<7>> created at line 519.
-    Found 16-bit 8-to-1 multiplexer for signal <_n0135> created at line 150.
-    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 228
+    Found 1-bit 31-to-1 multiplexer for signal <tp<5>> created at line 519.
+    Found 1-bit 31-to-1 multiplexer for signal <tp<6>> created at line 520.
+    Found 1-bit 31-to-1 multiplexer for signal <tp<7>> created at line 521.
+    Found 16-bit 8-to-1 multiplexer for signal <_n0135> created at line 151.
+    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 229
     Summary:
 	inferred   1 D-type flip-flop(s).
 	inferred  23 Multiplexer(s).
@@ -1110,10 +1110,10 @@ Primitive and Black Box Usage:
 #      FDSE                        : 33
 # Clock Buffers                    : 2
 #      BUFG                        : 2
-# IO Buffers                       : 65
+# IO Buffers                       : 64
 #      IBUF                        : 21
 #      IBUFG                       : 1
-#      OBUF                        : 42
+#      OBUF                        : 41
 #      OBUFT                       : 1
 # DCMs                             : 1
 #      DCM_SP                      : 1
@@ -1137,8 +1137,8 @@ Slice Logic Distribution:
    Number of unique control sets:       115
 
 IO Utilization: 
- Number of IOs:                          65
- Number of bonded IOBs:                  65  out of    102    63%  
+ Number of IOs:                          64
+ Number of bonded IOBs:                  64  out of    102    62%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
@@ -1240,7 +1240,7 @@ Offset:              5.828ns (Levels of Logic = 5)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_60mHz'
-  Total number of paths / destination ports: 315 / 42
+  Total number of paths / destination ports: 314 / 41
 -------------------------------------------------------------------------
 Offset:              9.353ns (Levels of Logic = 5)
   Source:            u_spi_config/addr_8 (FF)
@@ -1299,12 +1299,12 @@ clk_60mHz      |   10.498|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 10.32 secs
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 17.97 secs
  
 --> 
 
-Total memory usage is 4588340 kilobytes
+Total memory usage is 4546200 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)
