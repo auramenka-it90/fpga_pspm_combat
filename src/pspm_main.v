@@ -9,7 +9,6 @@
 //  Implements a dual-plane architecture (Control Plane + Data Plane) over a 
 //  shared physical SPI bus using two independent Chip Selects (NSS_P, NSS_D).
 //  Includes UART/RS-485 hardware multiplexer for DD4 and DD5 transceivers.
-//  Master 400 Hz Data Ready IRQ is synchronized to Phase 2-3 (UON23).
 //
 //  Target Silicon: Xilinx Spartan-6 (XC6SLX9-TQG144)
 //  Toolchain:      ISE 14.7 / XST
@@ -34,7 +33,7 @@ module pspm_main (
     input  wire                         spi_stm32_nss_p, // CS for Polling / Config (PB0)
     input  wire                         spi_stm32_nss_d, // CS for DMA / Burst (PB2)
 
-    // --- Global Hardware Interrupt to STM32 (Active-Low) ---
+    // --- Global Hardware Interrupt ---
     output wire                         fpga_2_stm32_interrupt_N, 
 
     // =========================================================================
@@ -55,7 +54,7 @@ module pspm_main (
     output wire                         de3,             // Transmitter Driver Enable for DD5 (DE/RE_N)
     
     // --- External Test Points & LEDs ---
-    output wire [7:5]                   tp,              
+    output wire [8:5]                   tp,              
     output wire [2:0]                   led,             
     
     // =========================================================================
@@ -230,27 +229,42 @@ module pspm_main (
                             (!spi_stm32_nss_d) ? dma_miso_internal : 
                             1'bZ;
 
-    // =========================================================================
+   // =========================================================================
     // CONTROL PLANE: DEBUG MODULE
     // =========================================================================
     wire [`_D_DATA_WIDTH_-1:0] debug_misc_out; 
     wire [14:0]                debug_tp_mux_out;
+    wire                       reconfig_trigger;
 
     debug_module #(
         .ADR_WIDTH (`_D_S_CHIP_ADDR_WIDTH_),
         .DATA_WIDTH(`_D_DATA_WIDTH_)
     ) u_debug_module (
-        .clk        (clk),
-        .rst        (rst),
-        .cpu_addr   (addr_chip_s),
-        .cpu_di     (cfg_data_to_fpga),
-        .cpu_wr     (wr_dev_s[`_D_S_DEBUG_ID_]),
-        .cpu_rd     (rd_dev_s[`_D_S_DEBUG_ID_]),
-        .cpu_do     (data_rd_dev_s[`_D_S_DEBUG_ID_]),
-        .misc_out   (debug_misc_out),
-        .tp_mux_out (debug_tp_mux_out)
+        .clk              (clk),
+        .rst              (rst),
+        .cpu_addr         (addr_chip_s),
+        .cpu_di           (cfg_data_to_fpga),
+        .cpu_wr           (wr_dev_s[`_D_S_DEBUG_ID_]),
+        .cpu_rd           (rd_dev_s[`_D_S_DEBUG_ID_]),
+        .cpu_do           (data_rd_dev_s[`_D_S_DEBUG_ID_]),
+        .misc_out         (debug_misc_out),
+        .tp_mux_out       (debug_tp_mux_out),
+        .reconfig_trigger (reconfig_trigger)
     );
 
+    // =========================================================================
+    // MULTIBOOT / IPROG RECONFIGURATION CONTROLLER
+    // Triggers internal FPGA reboot to Image 2 (Flash Offset 0x0010_0000 = 1 MB)
+    // =========================================================================
+   	
+	multiboot_icap #(
+        .IMAGE2_ADDR (24'h100000) // 1 MB Flash Offset (0x0010_0000)
+    ) u_multiboot (
+        .clk     (clk),
+        .rst     (rst),
+        .trigger (reconfig_trigger)
+    );
+	
     assign led = debug_misc_out[2:0];
 
     // =========================================================================
@@ -306,13 +320,12 @@ module pspm_main (
 
     // =========================================================================
     // CONTROL PLANE: INTERRUPT CONTROLLER (Strict 2 Lines: No Trimming!)
-    // Master 400 Hz IRQ is synchronized to Phase 2-3 (UON23)
     // =========================================================================
-    wire irq_master_ready;
+    wire irq_adc12_ready;
     
     wire [1:0] hardware_irq_bus = {
         irq_freq_err,               // IRQ [1]: Frequency Watchdog Error
-        irq_master_ready            // IRQ [0]: Master 400 Hz Data Ready (Synced to UON23)
+        irq_adc12_ready             // IRQ [0]: ADC Block Data Ready (UON12)
     };
 
     interrupt_controller #( 
@@ -350,7 +363,7 @@ module pspm_main (
         .cpu_do          (data_rd_dev_s[`_D_S_ADC_BLOCK_ID_]),
         
         .adc_data_out    (adc_dma_payload),
-        .irq_adc12_ready (irq_master_ready), // Master 400 Hz IRQ output (UON23)
+        .irq_adc12_ready (irq_adc12_ready),
         .dma_ack         (dma_rd_strobe),
         
         .comp_uon12      (comp_uon12_clean),
@@ -496,7 +509,7 @@ module pspm_main (
     assign tp_signals[18] = da21_cnvst_n;
     assign tp_signals[19] = da22_cnvst_n;
     assign tp_signals[20] = da45_cnvst_n;
-    assign tp_signals[21] = irq_master_ready;   // Master 400 Hz Data Ready (UON23)
+    assign tp_signals[21] = irq_adc12_ready;
     
     // --- Resolver ---
     assign tp_signals[22] = res_cnvst_n;
@@ -519,5 +532,6 @@ module pspm_main (
     assign tp[5] = tp_signals[ debug_tp_mux_out[4:0]   ];
     assign tp[6] = tp_signals[ debug_tp_mux_out[9:5]   ];
     assign tp[7] = tp_signals[ debug_tp_mux_out[14:10] ];
-
+	assign tp[8] = tick_1khz;
+	
 endmodule

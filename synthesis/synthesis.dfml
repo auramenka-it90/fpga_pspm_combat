@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> Parameter xsthdpdir set to d:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 TABLE OF CONTENTS
@@ -151,6 +151,8 @@ Parsing module <adc_processor_resolver>.
 Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\rdc\resolver_block.v" into library pspm
 Parsing verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\/define.v" included at line 1.
 Parsing module <resolver_block>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\multiboot_icap.v" into library pspm
+Parsing module <multiboot_icap>.
 
 =========================================================================
 *                            HDL Elaboration                            *
@@ -173,6 +175,10 @@ Elaborating module <spi_stm32_fpga_bridge>.
 Elaborating module <spi_stm32_multi_word_bridge(READ_WORDS=29,WRITE_WORDS=10)>.
 
 Elaborating module <debug_module(ADR_WIDTH=6,DATA_WIDTH=16)>.
+
+Elaborating module <multiboot_icap(IMAGE2_ADDR=24'b0100000000000000000000)>.
+
+Elaborating module <ICAP_SPARTAN6(DEVICE_ID=32'b0100000000000001000010010011,SIM_CFG_FILE_NAME="NONE")>.
 
 Elaborating module <comparator_block(ADR_WIDTH=6,DATA_WIDTH=16)>.
 
@@ -202,23 +208,23 @@ Elaborating module <ad5543_dac_ctrl(CLK_DIV=5)>.
 
 Synthesizing Unit <pspm_main>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v".
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 156: Output port <busy> of the instance <u_spi_config> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 211: Output port <busy> of the instance <u_spi_dma> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da21_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da21_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da22_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da22_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da45_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 342: Output port <da45_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 399: Output port <data_ready> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 399: Output port <range0> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 399: Output port <range1> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 155: Output port <busy> of the instance <u_spi_config> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 210: Output port <busy> of the instance <u_spi_dma> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da21_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da21_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da22_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da22_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da45_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da45_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 412: Output port <data_ready> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 412: Output port <range0> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 412: Output port <range1> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_monitor_div2>.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<5>> created at line 519.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<6>> created at line 520.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<7>> created at line 521.
-    Found 16-bit 8-to-1 multiplexer for signal <_n0135> created at line 151.
-    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 229
+    Found 1-bit 31-to-1 multiplexer for signal <tp<5>> created at line 532.
+    Found 1-bit 31-to-1 multiplexer for signal <tp<6>> created at line 533.
+    Found 1-bit 31-to-1 multiplexer for signal <tp<7>> created at line 534.
+    Found 16-bit 8-to-1 multiplexer for signal <_n0135> created at line 150.
+    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 228
     Summary:
 	inferred   1 D-type flip-flop(s).
 	inferred  23 Multiplexer(s).
@@ -321,11 +327,31 @@ Synthesizing Unit <debug_module>.
         DATA_WIDTH = 16
     Found 16-bit register for signal <misc_reg>.
     Found 15-bit register for signal <tp_mux_reg>.
+    Found 1-bit register for signal <reconfig_trigger>.
     Found 16-bit register for signal <fb_reg>.
     Summary:
-	inferred  47 D-type flip-flop(s).
+	inferred  48 D-type flip-flop(s).
 	inferred   4 Multiplexer(s).
 Unit <debug_module> synthesized.
+
+Synthesizing Unit <multiboot_icap>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\multiboot_icap.v".
+        IMAGE2_ADDR = 24'b000100000000000000000000
+    Found 1-bit register for signal <icap_clk_reg>.
+    Found 2-bit register for signal <trig_sync>.
+    Found 1-bit register for signal <state>.
+    Found 4-bit register for signal <seq_idx>.
+    Found 1-bit register for signal <icap_ce_n>.
+    Found 3-bit register for signal <div_cnt>.
+    Found 3-bit adder for signal <div_cnt[2]_GND_12_o_add_2_OUT> created at line 55.
+    Found 4-bit adder for signal <seq_idx[3]_GND_12_o_add_11_OUT> created at line 129.
+    Found 16x16-bit Read Only RAM for signal <raw_icap_data>
+    Summary:
+	inferred   1 RAM(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  12 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <multiboot_icap> synthesized.
 
 Synthesizing Unit <comparator_block>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\modules\comparator_block.v".
@@ -346,9 +372,9 @@ Synthesizing Unit <comparator_block>.
     Found 1-bit register for signal <err_12>.
     Found 1-bit register for signal <err_23>.
     Found 4-bit register for signal <prescaler>.
-    Found 4-bit adder for signal <prescaler[3]_GND_12_o_add_2_OUT> created at line 97.
-    Found 16-bit adder for signal <cnt_12[15]_GND_12_o_add_20_OUT> created at line 179.
-    Found 16-bit adder for signal <cnt_23[15]_GND_12_o_add_30_OUT> created at line 191.
+    Found 4-bit adder for signal <prescaler[3]_GND_14_o_add_2_OUT> created at line 97.
+    Found 16-bit adder for signal <cnt_12[15]_GND_14_o_add_20_OUT> created at line 179.
+    Found 16-bit adder for signal <cnt_23[15]_GND_14_o_add_30_OUT> created at line 191.
     Found 16-bit comparator greater for signal <cnt_12[15]_reg_min_per[15]_LessThan_18_o> created at line 175
     Found 16-bit comparator greater for signal <reg_max_per[15]_cnt_12[15]_LessThan_20_o> created at line 178
     Found 16-bit comparator greater for signal <cnt_23[15]_reg_min_per[15]_LessThan_28_o> created at line 188
@@ -368,14 +394,14 @@ Synthesizing Unit <comp_debounce_dyn>.
     Found 16-bit register for signal <blanking_timer>.
     Found 1-bit register for signal <blanking_active>.
     Found 2-bit register for signal <sync_regs>.
-    Found 17-bit subtractor for signal <GND_13_o_GND_13_o_sub_5_OUT> created at line 63.
-    Found 17-bit subtractor for signal <GND_13_o_GND_13_o_sub_11_OUT> created at line 75.
-    Found 16-bit adder for signal <blanking_timer[15]_GND_13_o_add_6_OUT> created at line 64.
-    Found 16-bit adder for signal <verify_timer[15]_GND_13_o_add_12_OUT> created at line 76.
-    Found 32-bit comparator greater for signal <GND_13_o_GND_13_o_LessThan_6_o> created at line 63
+    Found 17-bit subtractor for signal <GND_15_o_GND_15_o_sub_5_OUT> created at line 63.
+    Found 17-bit subtractor for signal <GND_15_o_GND_15_o_sub_11_OUT> created at line 75.
+    Found 16-bit adder for signal <blanking_timer[15]_GND_15_o_add_6_OUT> created at line 64.
+    Found 16-bit adder for signal <verify_timer[15]_GND_15_o_add_12_OUT> created at line 76.
+    Found 32-bit comparator greater for signal <GND_15_o_GND_15_o_LessThan_6_o> created at line 63
     Found 1-bit comparator equal for signal <n0011> created at line 73
-    Found 32-bit comparator greater for signal <GND_13_o_GND_13_o_LessThan_12_o> created at line 75
-INFO:Xst:2774 - HDL ADVISOR - KEEP property attached to signal sync_regs[0]_GND_13_o_mux_1_OUT may hinder XST clustering optimizations.
+    Found 32-bit comparator greater for signal <GND_15_o_GND_15_o_LessThan_12_o> created at line 75
+INFO:Xst:2774 - HDL ADVISOR - KEEP property attached to signal sync_regs[0]_GND_15_o_mux_1_OUT may hinder XST clustering optimizations.
     Summary:
 	inferred   4 Adder/Subtractor(s).
 	inferred  36 D-type flip-flop(s).
@@ -458,17 +484,17 @@ INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analo
     Found 16-bit subtractor for signal <decimation_max> created at line 53.
     Found 32-bit subtractor for signal <acc_ac1_int[31]_ext_ac_1[31]_sub_27_OUT> created at line 145.
     Found 32-bit subtractor for signal <acc_ac2_int[31]_ext_ac_2[31]_sub_28_OUT> created at line 146.
-    Found 10-bit adder for signal <sampling_timer[9]_GND_16_o_add_6_OUT> created at line 67.
+    Found 10-bit adder for signal <sampling_timer[9]_GND_18_o_add_6_OUT> created at line 67.
     Found 32-bit adder for signal <acc_ac1_int[31]_ext_ac_1[31]_add_24_OUT> created at line 142.
     Found 32-bit adder for signal <acc_ac2_int[31]_ext_ac_2[31]_add_25_OUT> created at line 143.
-    Found 16-bit adder for signal <cnt_ac_int[15]_GND_16_o_add_30_OUT> created at line 148.
+    Found 16-bit adder for signal <cnt_ac_int[15]_GND_18_o_add_30_OUT> created at line 148.
     Found 32-bit adder for signal <final_dc_1> created at line 156.
     Found 32-bit adder for signal <final_dc_2> created at line 157.
-    Found 16-bit adder for signal <decimation_cnt[15]_GND_16_o_add_60_OUT> created at line 180.
-    Found 16-bit shifter logical left for signal <GND_16_o_safe_shift[4]_shift_left_2_OUT> created at line 53
+    Found 16-bit adder for signal <decimation_cnt[15]_GND_18_o_add_60_OUT> created at line 180.
+    Found 16-bit shifter logical left for signal <GND_18_o_safe_shift[4]_shift_left_2_OUT> created at line 53
     Found 48-bit shifter logical right for signal <n0141> created at line 170
     Found 48-bit shifter logical right for signal <n0142> created at line 171
-    Found 5-bit comparator greater for signal <PWR_17_o_shift_sel[4]_LessThan_1_o> created at line 52
+    Found 5-bit comparator greater for signal <PWR_19_o_shift_sel[4]_LessThan_1_o> created at line 52
     Found 10-bit comparator greater for signal <n0004> created at line 63
     Found 16-bit comparator greater for signal <n0058> created at line 169
     Summary:
@@ -506,15 +532,15 @@ WARNING:Xst:647 - Input <mode> is never used. This port will be preserved and le
     | Inputs             | 10                                             |
     | Outputs            | 11                                             |
     | Clock              | clk (rising_edge)                              |
-    | Reset              | rst_n_INV_79_o (positive)                      |
+    | Reset              | rst_n_INV_83_o (positive)                      |
     | Reset type         | synchronous                                    |
     | Reset State        | 0000                                           |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 4-bit subtractor for signal <bit_cnt[3]_GND_18_o_sub_36_OUT> created at line 187.
-    Found 2-bit adder for signal <sclk_cnt[1]_GND_18_o_add_29_OUT> created at line 178.
-    Found 8-bit adder for signal <timer[7]_GND_18_o_add_52_OUT> created at line 228.
+    Found 4-bit subtractor for signal <bit_cnt[3]_GND_20_o_sub_36_OUT> created at line 187.
+    Found 2-bit adder for signal <sclk_cnt[1]_GND_20_o_add_29_OUT> created at line 178.
+    Found 8-bit adder for signal <timer[7]_GND_20_o_add_52_OUT> created at line 228.
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred 113 D-type flip-flop(s).
@@ -542,18 +568,18 @@ INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analo
     Found 1-bit register for signal <ready_dc>.
     Found 10-bit register for signal <sampling_timer>.
     Found 16-bit subtractor for signal <decimation_max> created at line 38.
-    Found 10-bit adder for signal <sampling_timer[9]_GND_19_o_add_6_OUT> created at line 52.
+    Found 10-bit adder for signal <sampling_timer[9]_GND_21_o_add_6_OUT> created at line 52.
     Found 32-bit adder for signal <final_ch1> created at line 94.
     Found 32-bit adder for signal <final_ch2> created at line 95.
     Found 32-bit adder for signal <final_ch3> created at line 96.
     Found 32-bit adder for signal <final_ch4> created at line 97.
-    Found 16-bit adder for signal <decimation_cnt[15]_GND_19_o_add_28_OUT> created at line 124.
-    Found 16-bit shifter logical left for signal <GND_19_o_safe_shift[4]_shift_left_2_OUT> created at line 38
+    Found 16-bit adder for signal <decimation_cnt[15]_GND_21_o_add_28_OUT> created at line 124.
+    Found 16-bit shifter logical left for signal <GND_21_o_safe_shift[4]_shift_left_2_OUT> created at line 38
     Found 48-bit shifter logical right for signal <n0096> created at line 110
     Found 48-bit shifter logical right for signal <n0097> created at line 111
     Found 48-bit shifter logical right for signal <n0098> created at line 112
     Found 48-bit shifter logical right for signal <n0099> created at line 113
-    Found 5-bit comparator greater for signal <PWR_21_o_shift_sel[4]_LessThan_1_o> created at line 37
+    Found 5-bit comparator greater for signal <PWR_23_o_shift_sel[4]_LessThan_1_o> created at line 37
     Found 10-bit comparator lessequal for signal <n0004> created at line 48
     Found 16-bit comparator greater for signal <n0021> created at line 109
     Summary:
@@ -609,12 +635,12 @@ INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analo
     Found 32-bit subtractor for signal <int_sin_pitch[31]_ext_sin_pitch[31]_sub_42_OUT> created at line 164.
     Found 32-bit subtractor for signal <int_cos_roll[31]_ext_cos_roll[31]_sub_43_OUT> created at line 165.
     Found 32-bit subtractor for signal <int_cos_pitch[31]_ext_cos_pitch[31]_sub_44_OUT> created at line 166.
-    Found 10-bit adder for signal <sampling_timer[9]_GND_21_o_add_2_OUT> created at line 63.
+    Found 10-bit adder for signal <sampling_timer[9]_GND_23_o_add_2_OUT> created at line 63.
     Found 32-bit adder for signal <int_sin_roll[31]_ext_sin_roll[31]_add_36_OUT> created at line 158.
     Found 32-bit adder for signal <int_sin_pitch[31]_ext_sin_pitch[31]_add_37_OUT> created at line 159.
     Found 32-bit adder for signal <int_cos_roll[31]_ext_cos_roll[31]_add_38_OUT> created at line 160.
     Found 32-bit adder for signal <int_cos_pitch[31]_ext_cos_pitch[31]_add_39_OUT> created at line 161.
-    Found 16-bit adder for signal <cnt_int[15]_GND_21_o_add_48_OUT> created at line 168.
+    Found 16-bit adder for signal <cnt_int[15]_GND_23_o_add_48_OUT> created at line 168.
     Found 16-bit 4-to-1 multiplexer for signal <v_sin_roll> created at line 97.
     Found 16-bit 4-to-1 multiplexer for signal <v_sin_pitch> created at line 101.
     Found 16-bit 4-to-1 multiplexer for signal <v_cos_roll> created at line 105.
@@ -644,11 +670,11 @@ Synthesizing Unit <dac_ad5543_block>.
     Found 1-bit register for signal <hard_trigger_d>.
     Found 16-bit register for signal <cpu_do>.
     Found 10-bit register for signal <bipolar_cfg_reg>.
-    Found 4-bit adder for signal <scan_idx[3]_GND_22_o_add_59_OUT> created at line 195.
-    Found 1-bit 10-to-1 multiplexer for signal <active_dac_sel[3]_X_20_o_Mux_2_o> created at line 77.
-    Found 1-bit 10-to-1 multiplexer for signal <scan_idx[3]_X_20_o_Mux_54_o> created at line 172.
-    Found 16-bit 13-to-1 multiplexer for signal <scan_idx[3]_GND_22_o_wide_mux_55_OUT> created at line 176.
-    Found 16-bit 10-to-1 multiplexer for signal <cpu_addr[3]_X_20_o_wide_mux_79_OUT> created at line 210.
+    Found 4-bit adder for signal <scan_idx[3]_GND_24_o_add_59_OUT> created at line 195.
+    Found 1-bit 10-to-1 multiplexer for signal <active_dac_sel[3]_X_22_o_Mux_2_o> created at line 77.
+    Found 1-bit 10-to-1 multiplexer for signal <scan_idx[3]_X_22_o_Mux_54_o> created at line 172.
+    Found 16-bit 13-to-1 multiplexer for signal <scan_idx[3]_GND_24_o_wide_mux_55_OUT> created at line 176.
+    Found 16-bit 10-to-1 multiplexer for signal <cpu_addr[3]_X_22_o_wide_mux_79_OUT> created at line 210.
     Found 4-bit comparator lessequal for signal <n0002> created at line 77
     Found 4-bit comparator lessequal for signal <n0004> created at line 77
     Found 6-bit comparator lessequal for signal <n0117> created at line 209
@@ -683,8 +709,8 @@ Synthesizing Unit <ad5543_dac_ctrl>.
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 4-bit subtractor for signal <bit_cnt[3]_GND_23_o_sub_15_OUT> created at line 113.
-    Found 4-bit adder for signal <delay_cnt[3]_GND_23_o_add_24_OUT> created at line 133.
+    Found 4-bit subtractor for signal <bit_cnt[3]_GND_25_o_sub_15_OUT> created at line 113.
+    Found 4-bit adder for signal <delay_cnt[3]_GND_25_o_add_24_OUT> created at line 133.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  27 D-type flip-flop(s).
@@ -696,7 +722,9 @@ Unit <ad5543_dac_ctrl> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 62
+# RAMs                                                 : 1
+ 16x16-bit single-port Read Only RAM                   : 1
+# Adders/Subtractors                                   : 64
  10-bit adder                                          : 5
  16-bit adder                                          : 12
  16-bit subtractor                                     : 3
@@ -704,15 +732,16 @@ Macro Statistics
  17-bit subtractor                                     : 4
  18-bit adder                                          : 1
  2-bit adder                                           : 4
+ 3-bit adder                                           : 1
  32-bit adder                                          : 8
  32-bit addsub                                         : 8
- 4-bit adder                                           : 4
+ 4-bit adder                                           : 5
  4-bit subtractor                                      : 6
  6-bit adder                                           : 1
  8-bit adder                                           : 4
  9-bit adder                                           : 1
-# Registers                                            : 240
- 1-bit register                                        : 81
+# Registers                                            : 247
+ 1-bit register                                        : 85
  10-bit register                                       : 7
  14-bit register                                       : 8
  144-bit register                                      : 1
@@ -721,9 +750,10 @@ Macro Statistics
  160-bit register                                      : 3
  17-bit register                                       : 1
  18-bit register                                       : 1
- 2-bit register                                        : 18
+ 2-bit register                                        : 19
+ 3-bit register                                        : 1
  32-bit register                                       : 28
- 4-bit register                                        : 12
+ 4-bit register                                        : 13
  464-bit register                                      : 1
  5-bit register                                        : 4
  6-bit register                                        : 1
@@ -745,7 +775,7 @@ Macro Statistics
  6-bit comparator lessequal                            : 2
  9-bit comparator greater                              : 2
  9-bit comparator lessequal                            : 1
-# Multiplexers                                         : 413
+# Multiplexers                                         : 414
  1-bit 10-to-1 multiplexer                             : 2
  1-bit 2-to-1 multiplexer                              : 67
  1-bit 31-to-1 multiplexer                             : 3
@@ -763,7 +793,7 @@ Macro Statistics
  2-bit 2-to-1 multiplexer                              : 8
  3-bit 2-to-1 multiplexer                              : 1
  32-bit 2-to-1 multiplexer                             : 8
- 4-bit 2-to-1 multiplexer                              : 21
+ 4-bit 2-to-1 multiplexer                              : 22
  5-bit 2-to-1 multiplexer                              : 4
  6-bit 2-to-1 multiplexer                              : 1
  7-bit 2-to-1 multiplexer                              : 1
@@ -846,6 +876,22 @@ The following registers are absorbed into counter <cnt_12>: 1 register on signal
 The following registers are absorbed into counter <cnt_23>: 1 register on signal <cnt_23>.
 Unit <comparator_block> synthesized (advanced).
 
+Synthesizing (advanced) Unit <multiboot_icap>.
+The following registers are absorbed into counter <div_cnt>: 1 register on signal <div_cnt>.
+The following registers are absorbed into counter <seq_idx>: 1 register on signal <seq_idx>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_raw_icap_data> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 16-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <seq_idx>       |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <raw_icap_data> |          |
+    -----------------------------------------------------------------------
+Unit <multiboot_icap> synthesized (advanced).
+
 Synthesizing (advanced) Unit <spi_stm32_fpga_bridge>.
 The following registers are absorbed into counter <bit_cnt>: 1 register on signal <bit_cnt>.
 Unit <spi_stm32_fpga_bridge> synthesized (advanced).
@@ -859,6 +905,8 @@ Unit <system_clk_rst> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# RAMs                                                 : 1
+ 16x16-bit single-port distributed Read Only RAM       : 1
 # Adders/Subtractors                                   : 26
  10-bit adder                                          : 1
  16-bit adder                                          : 2
@@ -868,21 +916,22 @@ Macro Statistics
  4-bit adder                                           : 3
  8-bit adder                                           : 4
  9-bit adder                                           : 1
-# Counters                                             : 28
+# Counters                                             : 30
  10-bit up counter                                     : 4
  16-bit up counter                                     : 10
  17-bit up counter                                     : 1
  18-bit up counter                                     : 1
  2-bit up counter                                      : 4
+ 3-bit up counter                                      : 1
  4-bit down counter                                    : 6
- 4-bit up counter                                      : 1
+ 4-bit up counter                                      : 2
  6-bit up counter                                      : 1
 # Accumulators                                         : 12
  32-bit up accumulator                                 : 4
  32-bit updown accumulator                             : 4
  32-bit updown loadable accumulator                    : 4
-# Registers                                            : 2857
- Flip-Flops                                            : 2857
+# Registers                                            : 2863
+ Flip-Flops                                            : 2863
 # Comparators                                          : 35
  1-bit comparator equal                                : 2
  10-bit comparator greater                             : 2
@@ -1015,6 +1064,8 @@ Optimizing unit <bist_generator> ...
 
 Optimizing unit <debug_module> ...
 
+Optimizing unit <multiboot_icap> ...
+
 Optimizing unit <comparator_block> ...
 
 Optimizing unit <interrupt_controller> ...
@@ -1042,12 +1093,11 @@ Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block pspm_main, actual ratio is 112.
 Optimizing block <pspm_main> to meet ratio 100 (+ 5) of 1430 slices :
-Area constraint is met for block <pspm_main>, final ratio is 102.
+Area constraint is met for block <pspm_main>, final ratio is 103.
 FlipFlop u_adc_subsystem/shift_da45_4 has been replicated 1 time(s)
-FlipFlop u_spi_config/addr_0 has been replicated 1 time(s)
-FlipFlop u_spi_config/addr_1 has been replicated 1 time(s)
 FlipFlop u_spi_config/addr_2 has been replicated 1 time(s)
 FlipFlop u_spi_config/addr_3 has been replicated 1 time(s)
+FlipFlop u_spi_config/addr_4 has been replicated 1 time(s)
 FlipFlop u_spi_config/addr_6 has been replicated 2 time(s)
 FlipFlop u_spi_config/addr_7 has been replicated 2 time(s)
 FlipFlop u_spi_config/addr_8 has been replicated 2 time(s)
@@ -1055,6 +1105,7 @@ FlipFlop u_spi_config/addr_8 has been replicated 2 time(s)
 Final Macro Processing ...
 
 Processing Unit <pspm_main> :
+	Found 2-bit shift register for signal <u_multiboot/trig_sync_1>.
 INFO:Xst:741 - HDL ADVISOR - A 8-bit shift register was found for signal <u_sys_clk_rst/sync_reg_7> and currently occupies 8 logic cells (4 slices). Removing the set/reset logic would take advantage of SRL32 (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.
 Unit <pspm_main> processed.
 
@@ -1062,8 +1113,10 @@ Unit <pspm_main> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 3479
- Flip-Flops                                            : 3479
+# Registers                                            : 3489
+ Flip-Flops                                            : 3489
+# Shift Registers                                      : 1
+ 2-bit shift register                                  : 1
 
 =========================================================================
 
@@ -1086,37 +1139,41 @@ Top Level Output File Name         : pspm_main.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 5797
+# BELS                             : 5821
 #      GND                         : 1
-#      INV                         : 80
+#      INV                         : 82
 #      LUT1                        : 187
-#      LUT2                        : 177
-#      LUT3                        : 222
-#      LUT4                        : 687
-#      LUT5                        : 677
-#      LUT6                        : 1692
+#      LUT2                        : 181
+#      LUT3                        : 221
+#      LUT4                        : 701
+#      LUT5                        : 678
+#      LUT6                        : 1696
 #      MUXCY                       : 1032
 #      MUXF7                       : 48
 #      VCC                         : 1
 #      XORCY                       : 993
-# FlipFlops/Latches                : 3479
+# FlipFlops/Latches                : 3490
 #      FD                          : 16
 #      FDC                         : 1
-#      FDE                         : 8
+#      FDE                         : 9
 #      FDP                         : 8
-#      FDR                         : 158
-#      FDRE                        : 3241
-#      FDS                         : 14
+#      FDR                         : 168
+#      FDRE                        : 3240
+#      FDS                         : 15
 #      FDSE                        : 33
-# Clock Buffers                    : 2
-#      BUFG                        : 2
-# IO Buffers                       : 64
+# Shift Registers                  : 1
+#      SRLC16E                     : 1
+# Clock Buffers                    : 3
+#      BUFG                        : 3
+# IO Buffers                       : 65
 #      IBUF                        : 21
 #      IBUFG                       : 1
-#      OBUF                        : 41
+#      OBUF                        : 42
 #      OBUFT                       : 1
 # DCMs                             : 1
 #      DCM_SP                      : 1
+# Others                           : 1
+#      ICAP_SPARTAN6               : 1
 
 Device utilization summary:
 ---------------------------
@@ -1125,23 +1182,25 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            3479  out of  11440    30%  
- Number of Slice LUTs:                 3722  out of   5720    65%  
-    Number used as Logic:              3722  out of   5720    65%  
+ Number of Slice Registers:            3490  out of  11440    30%  
+ Number of Slice LUTs:                 3747  out of   5720    65%  
+    Number used as Logic:              3746  out of   5720    65%  
+    Number used as Memory:                1  out of   1440     0%  
+       Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   5566
-   Number with an unused Flip Flop:    2087  out of   5566    37%  
-   Number with an unused LUT:          1844  out of   5566    33%  
-   Number of fully used LUT-FF pairs:  1635  out of   5566    29%  
-   Number of unique control sets:       115
+ Number of LUT Flip Flop pairs used:   5584
+   Number with an unused Flip Flop:    2094  out of   5584    37%  
+   Number with an unused LUT:          1837  out of   5584    32%  
+   Number of fully used LUT-FF pairs:  1653  out of   5584    29%  
+   Number of unique control sets:       119
 
 IO Utilization: 
- Number of IOs:                          64
- Number of bonded IOBs:                  64  out of    102    62%  
+ Number of IOs:                          65
+ Number of bonded IOBs:                  65  out of    102    63%  
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
 
 ---------------------------
 Partition Resource Summary:
@@ -1164,8 +1223,9 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk_60mHz                          | DCM_SP:CLKFX           | 3475  |
+clk_60mHz                          | DCM_SP:CLKFX           | 3479  |
 clk_60mHz                          | IBUFG                  | 4     |
+u_multiboot/icap_clk_reg           | BUFG                   | 8     |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1178,7 +1238,7 @@ Speed Grade: -2
 
    Minimum period: 17.497ns (Maximum Frequency: 57.151MHz)
    Minimum input arrival time before clock: 5.828ns
-   Maximum output required time after clock: 9.353ns
+   Maximum output required time after clock: 9.456ns
    Maximum combinational path delay: 8.615ns
 
 Timing Details:
@@ -1188,7 +1248,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_60mHz'
   Clock period: 17.497ns (frequency: 57.151MHz)
-  Total number of paths / destination ports: 1034141 / 10191
+  Total number of paths / destination ports: 1034181 / 10198
 -------------------------------------------------------------------------
 Delay:               10.498ns (Levels of Logic = 9)
   Source:            u_spi_config/addr_9 (FF)
@@ -1216,6 +1276,28 @@ Delay:               10.498ns (Levels of Logic = 9)
                                        (27.5% logic, 72.5% route)
 
 =========================================================================
+Timing constraint: Default period analysis for Clock 'u_multiboot/icap_clk_reg'
+  Clock period: 2.807ns (frequency: 356.252MHz)
+  Total number of paths / destination ports: 21 / 11
+-------------------------------------------------------------------------
+Delay:               2.807ns (Levels of Logic = 1)
+  Source:            u_multiboot/state (FF)
+  Destination:       u_multiboot/seq_idx_3 (FF)
+  Source Clock:      u_multiboot/icap_clk_reg rising
+  Destination Clock: u_multiboot/icap_clk_reg rising
+
+  Data Path: u_multiboot/state to u_multiboot/seq_idx_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.525   0.766  u_multiboot/state (u_multiboot/state)
+     LUT2:I1->O            4   0.254   0.803  u_multiboot/Mcount_seq_idx_val1 (u_multiboot/Mcount_seq_idx_val)
+     FDR:R                     0.459          u_multiboot/seq_idx_0
+    ----------------------------------------
+    Total                      2.807ns (1.238ns logic, 1.569ns route)
+                                       (44.1% logic, 55.9% route)
+
+=========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_60mHz'
   Total number of paths / destination ports: 19 / 19
 -------------------------------------------------------------------------
@@ -1240,26 +1322,46 @@ Offset:              5.828ns (Levels of Logic = 5)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_60mHz'
-  Total number of paths / destination ports: 314 / 41
+  Total number of paths / destination ports: 315 / 42
 -------------------------------------------------------------------------
-Offset:              9.353ns (Levels of Logic = 5)
-  Source:            u_spi_config/addr_8 (FF)
+Offset:              9.456ns (Levels of Logic = 5)
+  Source:            u_spi_config/addr_7 (FF)
   Destination:       tp<7> (PAD)
   Source Clock:      clk_60mHz rising 1.7X
 
-  Data Path: u_spi_config/addr_8 to tp<7>
+  Data Path: u_spi_config/addr_7 to tp<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            80   0.525   2.054  u_spi_config/addr_8 (u_spi_config/addr_8)
-     LUT5:I4->O           19   0.254   1.369  rd_dev_s<1>1 (rd_dev_s<1>)
-     LUT6:I4->O            1   0.250   0.910  Mmux_tp<5>_10 (Mmux_tp<5>_10)
+     FDRE:C->Q            61   0.525   2.336  u_spi_config/addr_7 (u_spi_config/addr_7)
+     LUT5:I0->O            7   0.254   1.186  wr_dev_s<1>1 (wr_dev_s<1>)
+     LUT6:I2->O            1   0.254   0.910  Mmux_tp<5>_10 (Mmux_tp<5>_10)
      LUT6:I3->O            1   0.235   0.000  Mmux_tp<5>_41 (Mmux_tp<5>_4)
      MUXF7:I0->O           1   0.163   0.681  Mmux_tp<5>_2_f7 (tp_5_OBUF)
      OBUF:I->O                 2.912          tp_5_OBUF (tp<5>)
     ----------------------------------------
-    Total                      9.353ns (4.339ns logic, 5.014ns route)
-                                       (46.4% logic, 53.6% route)
+    Total                      9.456ns (4.343ns logic, 5.113ns route)
+                                       (45.9% logic, 54.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'u_multiboot/icap_clk_reg'
+  Total number of paths / destination ports: 66 / 18
+-------------------------------------------------------------------------
+Offset:              2.927ns (Levels of Logic = 1)
+  Source:            u_multiboot/seq_idx_3 (FF)
+  Destination:       u_multiboot/u_icap:I15 (PAD)
+  Source Clock:      u_multiboot/icap_clk_reg rising
+
+  Data Path: u_multiboot/seq_idx_3 to u_multiboot/u_icap:I15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             12   0.525   1.345  u_multiboot/seq_idx_3 (u_multiboot/seq_idx_3)
+     LUT4:I0->O            4   0.254   0.803  u_multiboot/Mram_raw_icap_data101 (u_multiboot/Mram_raw_icap_data10)
+    ICAP_SPARTAN6:I13          0.000          u_multiboot/u_icap
+    ----------------------------------------
+    Total                      2.927ns (0.779ns logic, 2.148ns route)
+                                       (26.6% logic, 73.4% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -1296,17 +1398,26 @@ Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 clk_60mHz      |   10.498|         |         |         |
 ---------------+---------+---------+---------+---------+
 
+Clock to Setup on destination clock u_multiboot/icap_clk_reg
+------------------------+---------+---------+---------+---------+
+                        | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+------------------------+---------+---------+---------+---------+
+clk_60mHz               |    5.307|         |         |         |
+u_multiboot/icap_clk_reg|    2.807|         |         |         |
+------------------------+---------+---------+---------+---------+
+
 =========================================================================
 
 
-Total REAL time to Xst completion: 18.00 secs
-Total CPU time to Xst completion: 17.97 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.73 secs
  
 --> 
 
-Total memory usage is 4546200 kilobytes
+Total memory usage is 4587640 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)
-Number of infos    :   54 (   0 filtered)
+Number of infos    :   55 (   0 filtered)
 
