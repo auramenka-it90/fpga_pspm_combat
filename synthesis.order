@@ -17,3 +17,4 @@ i<>.\src\analog_modules\adc\adc_processor_4dc.v
 i<>.\src\analog_modules\ad7367_multi_mode.v
 i<>.\src\analog_modules\rdc\adc_processor_resolver.v
 i<>.\src\analog_modules\rdc\resolver_block.v
+i<>.\src\multiboot_icap.v

@@ -229,27 +229,42 @@ module pspm_main (
                             (!spi_stm32_nss_d) ? dma_miso_internal : 
                             1'bZ;
 
-    // =========================================================================
+   // =========================================================================
     // CONTROL PLANE: DEBUG MODULE
     // =========================================================================
     wire [`_D_DATA_WIDTH_-1:0] debug_misc_out; 
     wire [14:0]                debug_tp_mux_out;
+    wire                       reconfig_trigger;
 
     debug_module #(
         .ADR_WIDTH (`_D_S_CHIP_ADDR_WIDTH_),
         .DATA_WIDTH(`_D_DATA_WIDTH_)
     ) u_debug_module (
-        .clk        (clk),
-        .rst        (rst),
-        .cpu_addr   (addr_chip_s),
-        .cpu_di     (cfg_data_to_fpga),
-        .cpu_wr     (wr_dev_s[`_D_S_DEBUG_ID_]),
-        .cpu_rd     (rd_dev_s[`_D_S_DEBUG_ID_]),
-        .cpu_do     (data_rd_dev_s[`_D_S_DEBUG_ID_]),
-        .misc_out   (debug_misc_out),
-        .tp_mux_out (debug_tp_mux_out)
+        .clk              (clk),
+        .rst              (rst),
+        .cpu_addr         (addr_chip_s),
+        .cpu_di           (cfg_data_to_fpga),
+        .cpu_wr           (wr_dev_s[`_D_S_DEBUG_ID_]),
+        .cpu_rd           (rd_dev_s[`_D_S_DEBUG_ID_]),
+        .cpu_do           (data_rd_dev_s[`_D_S_DEBUG_ID_]),
+        .misc_out         (debug_misc_out),
+        .tp_mux_out       (debug_tp_mux_out),
+        .reconfig_trigger (reconfig_trigger)
     );
 
+    // =========================================================================
+    // MULTIBOOT / IPROG RECONFIGURATION CONTROLLER
+    // Triggers internal FPGA reboot to Image 2 (Flash Offset 0x0010_0000 = 1 MB)
+    // =========================================================================
+   	
+	multiboot_icap #(
+        .IMAGE2_ADDR (24'h100000) // 1 MB Flash Offset (0x0010_0000)
+    ) u_multiboot (
+        .clk     (clk),
+        .rst     (rst),
+        .trigger (reconfig_trigger)
+    );
+	
     assign led = debug_misc_out[2:0];
 
     // =========================================================================

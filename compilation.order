@@ -2,6 +2,7 @@
 .\src\define.v
 .\src\system_clk_rst.v
 .\src\bist_generator.v
+.\src\multiboot_icap.v
 .\src\stm32_2_fpga_spi_bridge\spi_stm32_fpga_bridge.v
 .\src\stm32_2_fpga_spi_bridge\spi_stm32_multi_word_bridge.v
 .\src\analog_modules\ad7367_multi_mode.v

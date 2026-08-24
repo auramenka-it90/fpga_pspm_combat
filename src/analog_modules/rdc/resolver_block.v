@@ -69,7 +69,8 @@ module resolver_block #(
 );
 
     wire rst_n = ~rst;
-
+	
+	
     // Suppress unused input bits warning
     wire _unused_cpu_di = &{1'b0, cpu_di[13:8], 1'b0};
 
