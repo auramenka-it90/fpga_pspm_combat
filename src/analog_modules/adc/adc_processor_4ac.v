@@ -3,16 +3,7 @@
 // MODULE: adc_processor_4ac
 // DESCRIPTION: Synchronous demodulator (Lock-in Amplifier) for 4 AC channels.
 //              Accumulates data over a full 360-degree carrier cycle.
-//
-// ARCHITECTURE NOTE:
-// 'comp_in' and ADC 'busy' signals must be synchronized at the Top-Level.
-//
-// STM32 AMPLITUDE CONVERSION FORMULA:
-// const float AC_SCALE = 1.57079632f; // PI / 2.0
-// float v_peak_ch1 = ((float)acc_ch1 / (float)cnt_samples) * AC_SCALE;
-// float v_peak_ch2 = ((float)acc_ch2 / (float)cnt_samples) * AC_SCALE;
-// float v_peak_ch3 = ((float)acc_ch3 / (float)cnt_samples) * AC_SCALE;
-// float v_peak_ch4 = ((float)acc_ch4 / (float)cnt_samples) * AC_SCALE;
+//              Optimized with 'f_clog2' to eliminate Xst:1710 trimming warnings.
 // ==============================================================================
 
 module adc_processor_4ac #(
@@ -48,18 +39,31 @@ module adc_processor_4ac #(
 );
 
     // =========================================================
-    // 1. Sampling Timer
+    // 1. Bit-width calculation function (Eliminates Xst:1710)
     // =========================================================
-    reg [15:0] sampling_timer;
-    reg        start_pulse;
+    function integer f_clog2;
+        input integer value;
+        begin
+            for (f_clog2 = 0; value > 0; f_clog2 = f_clog2 + 1)
+                value = value >> 1;
+        end
+    endfunction
+
+    localparam integer TIMER_WIDTH = (f_clog2(SAMPLE_TICKS - 1) > 0) ? f_clog2(SAMPLE_TICKS - 1) : 1;
+
+    // =========================================================
+    // 2. Sampling Timer (Exact 10-bit counter)
+    // =========================================================
+    reg [TIMER_WIDTH-1:0] sampling_timer;
+    reg                   start_pulse;
 
     always @(posedge clk) begin
         if (!rst_n) begin
-            sampling_timer <= 16'd0;
+            sampling_timer <= {TIMER_WIDTH{1'b0}};
             start_pulse    <= 1'b0;
         end else begin
             if (sampling_timer >= (SAMPLE_TICKS - 1)) begin
-                sampling_timer <= 16'd0;
+                sampling_timer <= {TIMER_WIDTH{1'b0}};
                 start_pulse    <= 1'b1;
             end else begin
                 sampling_timer <= sampling_timer + 1'b1;
@@ -69,12 +73,9 @@ module adc_processor_4ac #(
     end
 
     // =========================================================
-    // 2. ADC Controller Instance
+    // 3. ADC Controller Instance
     // =========================================================
-    wire [15:0] raw_a1;
-    wire [15:0] raw_b1;
-    wire [15:0] raw_a2;
-    wire [15:0] raw_b2;
+    wire [15:0] raw_a1, raw_b1, raw_a2, raw_b2;
     wire        ready_pulse;
     
     ad7367_multi_mode u_adc (
@@ -103,16 +104,14 @@ module adc_processor_4ac #(
     );
 
     // =========================================================
-    // 3. SIGNAL ROUTING & EXTENSION
+    // 4. Signal Routing & Extension
     // =========================================================
     wire [31:0] ext_ch1 = {{16{raw_a1[15]}}, raw_a1};
     wire [31:0] ext_ch2 = {{16{raw_b1[15]}}, raw_b1};
     wire [31:0] ext_ch3 = {{16{raw_a2[15]}}, raw_a2};
     wire [31:0] ext_ch4 = {{16{raw_b2[15]}}, raw_b2};
 
-    // =========================================================
-    // 4. Synchronous Edge Detector
-    // =========================================================
+    // Synchronous Edge Detector
     reg comp_d;
     always @(posedge clk) begin
         if (!rst_n) comp_d <= 1'b0;
@@ -122,7 +121,7 @@ module adc_processor_4ac #(
     wire comp_edge = comp_in && !comp_d; 
 
     // =========================================================
-    // 5. ENGINE: Quad Synchronous Demodulator
+    // 5. Engine: Quad Synchronous Demodulator
     // =========================================================
     reg [31:0] int_ch1, int_ch2, int_ch3, int_ch4;
     reg [15:0] cnt_int;

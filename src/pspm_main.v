@@ -10,9 +10,18 @@
 //  shared physical SPI bus using two independent Chip Selects (NSS_P, NSS_D).
 //  Includes UART/RS-485 hardware multiplexer for DD4 and DD5 transceivers.
 //
+//  Subsystems:
+//   - DA36: Resolver ADC (Synchronous lock-in demodulation).
+//   - DA21: Elevation ADC (4x AC Channels synchronized to UON23).
+//   - DA22: Azimuth ADC   (4x AC Channels synchronized to UON12).
+//   - DA45: Telemetry ADC (4x DC Channels with dynamic decimation).
+//   - 10x AD5543 multiplying DACs with atomic DMA latch.
+//   - Dual Comparator Watchdog (UON12 / UON23).
+//   - MultiBoot IPROG Reconfiguration (Image 2 at 1 MB Flash offset).
+//
 //  Target Silicon: Xilinx Spartan-6 (XC6SLX9-TQG144)
-//  Toolchain:      ISE 14.7 / XST
-//  All comments in ASCII English.
+//  Toolchain:      Aldec Active-HDL 9.2 / ISE 14.7 / XST
+//  All comments in pure ASCII English.
 // =============================================================================
 
 module pspm_main (
@@ -39,7 +48,6 @@ module pspm_main (
     // =========================================================================
     // UART / RS-485 MULTIPLEXER INTERFACE
     // =========================================================================
-    // --- STM32 <-> FPGA UART Interface (from STM32 USART2) ---
     input  wire                         usart2_fpga_tx,  // TX data from STM32 PA2
     output wire                         usart2_fpga_rx,  // RX data to STM32 PA3
 
@@ -64,7 +72,7 @@ module pspm_main (
     input  wire                         UON12,           
     input  wire                         UON23,           
     
-    // DA36: Resolver ADC
+    // DA36: Resolver ADC (AD7367)
     output wire                         res_cnvst_n, 
     output wire                         res_cs_n, 
     output wire                         res_sclk, 
@@ -73,7 +81,7 @@ module pspm_main (
     input  wire                         res_dout_a, 
     input  wire                         res_dout_b,
 
-    // DA21: Elevation ADC
+    // DA21: Elevation ADC (AD7367 - 4x AC)
     output wire                         da21_cnvst_n, 
     output wire                         da21_cs_n, 
     output wire                         da21_sclk, 
@@ -82,7 +90,7 @@ module pspm_main (
     input  wire                         da21_dout_a, 
     input  wire                         da21_dout_b,
 
-    // DA22: Azimuth ADC
+    // DA22: Azimuth ADC (AD7367 - 4x AC)
     output wire                         da22_cnvst_n, 
     output wire                         da22_cs_n, 
     output wire                         da22_sclk, 
@@ -91,7 +99,7 @@ module pspm_main (
     input  wire                         da22_dout_a, 
     input  wire                         da22_dout_b,
 
-    // DA45: Telemetry ADC
+    // DA45: Telemetry ADC (AD7367 - 4x DC)
     output wire                         da45_cnvst_n, 
     output wire                         da45_cs_n, 
     output wire                         da45_sclk, 
@@ -198,15 +206,15 @@ module pspm_main (
     // DATA PLANE: SPI DMA BURST BRIDGE (Uses NSS_D)
     // =========================================================================
     wire [(16 * `_D_DMA_DAC_WORDS_)-1:0] dma_data_from_stm32; // 160 bits (10 DACs)
-    wire [(16 * `_D_DMA_WORDS_)-1:0]     dma_data_to_stm32;   // 464 bits (29 words)
+    wire [(16 * `_D_DMA_WORDS_)-1:0]     dma_data_to_stm32;   // 528 bits (33 words)
     
     wire dma_wr_strobe; 
     wire dma_rd_strobe; 
     wire dma_miso_internal;
 
     spi_stm32_multi_word_bridge #(
-        .READ_WORDS (`_D_DMA_WORDS_),     // 29 words
-        .WRITE_WORDS(`_D_DMA_DAC_WORDS_)  // 10 words
+        .READ_WORDS (`_D_DMA_WORDS_),     // 33 words (528 bits)
+        .WRITE_WORDS(`_D_DMA_DAC_WORDS_)  // 10 words (160 bits)
     ) u_spi_dma (
         .clk       (clk),       
         .rst       (rst),       
@@ -223,14 +231,13 @@ module pspm_main (
 
     // =========================================================================
     // MISO ARBITRATION (Top-Level Tri-State)
-    // Active low chip-selects. If unselected, bus remains High-Z.
     // =========================================================================
     assign spi_stm32_miso = (!spi_stm32_nss_p) ? cfg_miso_internal :
                             (!spi_stm32_nss_d) ? dma_miso_internal : 
                             1'bZ;
 
-   // =========================================================================
-    // CONTROL PLANE: DEBUG MODULE
+    // =========================================================================
+    // CONTROL PLANE: DEBUG MODULE (Device ID = 1)
     // =========================================================================
     wire [`_D_DATA_WIDTH_-1:0] debug_misc_out; 
     wire [14:0]                debug_tp_mux_out;
@@ -254,10 +261,8 @@ module pspm_main (
 
     // =========================================================================
     // MULTIBOOT / IPROG RECONFIGURATION CONTROLLER
-    // Triggers internal FPGA reboot to Image 2 (Flash Offset 0x0010_0000 = 1 MB)
     // =========================================================================
-   	
-	multiboot_icap #(
+    multiboot_icap #(
         .IMAGE2_ADDR (24'h100000) // 1 MB Flash Offset (0x0010_0000)
     ) u_multiboot (
         .clk     (clk),
@@ -269,31 +274,26 @@ module pspm_main (
 
     // =========================================================================
     // UART / RS-485 HARDWARE MULTIPLEXER (Controlled by debug_misc_out[3])
-    // Bit [3] = 0 -> Route to Channel 1 (DD4)
-    // Bit [3] = 1 -> Route to Channel 2 (DD5)
     // =========================================================================
     wire uart_mux_sel = debug_misc_out[3];
 
-    // TX Routing: Active channel gets STM32 TX, inactive channel holds UART IDLE (1'b1)
     assign tx2 = (uart_mux_sel == 1'b0) ? usart2_fpga_tx : 1'b1;
     assign tx3 = (uart_mux_sel == 1'b1) ? usart2_fpga_tx : 1'b1;
 
-    // RX Routing: STM32 RX receives from the selected active channel
     assign usart2_fpga_rx = (uart_mux_sel == 1'b0) ? rx2 : rx3;
 
-    // Driver Enables for RS-485 transceivers (Active-High):
     assign de2 = (uart_mux_sel == 1'b0) ? 1'b1 : 1'b0;
     assign de3 = (uart_mux_sel == 1'b1) ? 1'b1 : 1'b0;
 
     // =========================================================================
-    // COMPARATOR & WATCHDOG BLOCK
+    // COMPARATOR & WATCHDOG BLOCK (Device ID = 5)
     // =========================================================================
     wire uon12_selected = debug_misc_out[5] ? gen_uon12 : UON12;
     wire uon23_selected = debug_misc_out[5] ? gen_uon23 : UON23;
 
     wire comp_uon12_clean;
     wire comp_uon23_clean;
-    wire [31:0] comp_dma_payload;
+    wire [31:0] comp_dma_payload; // 2 words
     wire irq_freq_err;
 
     comparator_block #(
@@ -319,13 +319,13 @@ module pspm_main (
     wire res_comp_mux = debug_misc_out[4] ? comp_uon23_clean : comp_uon12_clean;
 
     // =========================================================================
-    // CONTROL PLANE: INTERRUPT CONTROLLER (Strict 2 Lines: No Trimming!)
+    // CONTROL PLANE: INTERRUPT CONTROLLER (Device ID = 2)
     // =========================================================================
     wire irq_adc12_ready;
     
     wire [1:0] hardware_irq_bus = {
         irq_freq_err,               // IRQ [1]: Frequency Watchdog Error
-        irq_adc12_ready             // IRQ [0]: ADC Block Data Ready (UON12)
+        irq_adc12_ready             // IRQ [0]: ADC Block Data Ready (UON23)
     };
 
     interrupt_controller #( 
@@ -344,9 +344,9 @@ module pspm_main (
     );
 
     // =========================================================================
-    // DATA PLANE: ADC SUBSYSTEM (DA21, DA22, DA45)
+    // DATA PLANE: ADC SUBSYSTEM (DA21 4AC, DA22 4AC, DA45 4DC) (Device ID = 6)
     // =========================================================================
-    wire [287:0] adc_dma_payload; // 18 words
+    wire [351:0] adc_dma_payload; // 22 words
 
     adc_block #(
         .ADR_WIDTH    (`_D_S_CHIP_ADDR_WIDTH_),
@@ -366,42 +366,42 @@ module pspm_main (
         .irq_adc12_ready (irq_adc12_ready),
         .dma_ack         (dma_rd_strobe),
         
-        .comp_uon12      (comp_uon12_clean),
-        .comp_uon23      (comp_uon23_clean),
+        .comp_uon12      (comp_uon12_clean), // Synced to Phase 1-2
+        .comp_uon23      (comp_uon23_clean), // Synced to Phase 2-3
         
         .da21_cnvst_n    (da21_cnvst_n), 
         .da21_cs_n       (da21_cs_n), 
         .da21_sclk       (da21_sclk), 
         .da21_addr       (da21_addr), 
+        .da21_range0     (),
+        .da21_range1     (),
         .da21_busy       (da21_busy), 
         .da21_dout_a     (da21_dout_a), 
         .da21_dout_b     (da21_dout_b),	
-        .da21_range0     (),
-        .da21_range1     (),
         
         .da22_cnvst_n    (da22_cnvst_n), 
         .da22_cs_n       (da22_cs_n), 
         .da22_sclk       (da22_sclk), 
         .da22_addr       (da22_addr), 
+        .da22_range0     (),
+        .da22_range1     (),
         .da22_busy       (da22_busy), 
         .da22_dout_a     (da22_dout_a), 
         .da22_dout_b     (da22_dout_b),	
-        .da22_range0     (),
-        .da22_range1     (),
         
         .da45_cnvst_n    (da45_cnvst_n), 
         .da45_cs_n       (da45_cs_n), 
         .da45_sclk       (da45_sclk), 
         .da45_addr       (da45_addr), 
+        .da45_range0     (),
+        .da45_range1     (),
         .da45_busy       (da45_busy), 
         .da45_dout_a     (da45_dout_a), 
-        .da45_dout_b     (da45_dout_b),
-        .da45_range0     (),
-        .da45_range1     ()
+        .da45_dout_b     (da45_dout_b)
     );
 
     // =========================================================================
-    // DATA PLANE: RESOLVER SUBSYSTEM (DA36)
+    // DATA PLANE: RESOLVER SUBSYSTEM (DA36) (Device ID = 4)
     // =========================================================================
     wire [143:0] res_dma_payload; // 9 words
     
@@ -436,7 +436,7 @@ module pspm_main (
     );
 
     // =========================================================================
-    // DATA PLANE: DAC SUBSYSTEM (10x AD5543)
+    // DATA PLANE: DAC SUBSYSTEM (10x AD5543) (Device ID = 3)
     // =========================================================================
     dac_ad5543_block #(
         .ADR_WIDTH    (`_D_S_CHIP_ADDR_WIDTH_)
@@ -459,16 +459,15 @@ module pspm_main (
     );
 
     // =========================================================================
-    // DMA READ BUS PACKING (464 bits = 29 words)
-    // Format: [463:432] Comp Payload (2 words)
-    //         [431:144] ADC Payload  (18 words)
+    // DMA READ BUS PACKING (528 bits = 33 words)
+    // Format: [527:496] Comp Payload (2 words)
+    //         [495:144] ADC Payload  (22 words)
     //         [143:0]   Res Payload  (9 words)
     // =========================================================================
     assign dma_data_to_stm32 = {comp_dma_payload, adc_dma_payload, res_dma_payload};
 
     // =========================================================================
     // TEST POINTS MULTIPLEXER (Controlled by Debug Module)
-    // Safe clock monitor toggle prevents Spartan-6 BUFG routing DRC errors.
     // =========================================================================
     wire [31:0] tp_signals;
     
@@ -525,13 +524,12 @@ module pspm_main (
     assign tp_signals[28] = de2;
     assign tp_signals[29] = de3;
     
-    // --- Unused slots ---
     assign tp_signals[31:30] = 2'd0;
 
-    // --- Dynamic Routing to Physical Pins ---
+    // Dynamic Routing to Physical Pins
     assign tp[5] = tp_signals[ debug_tp_mux_out[4:0]   ];
     assign tp[6] = tp_signals[ debug_tp_mux_out[9:5]   ];
     assign tp[7] = tp_signals[ debug_tp_mux_out[14:10] ];
-	assign tp[8] = tick_1khz;
+    assign tp[8] = tick_1khz;
 	
 endmodule

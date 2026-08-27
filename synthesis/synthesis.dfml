@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to d:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 TABLE OF CONTENTS
@@ -172,7 +172,7 @@ Elaborating module <bist_generator(SYS_CLK_FREQ=100000000,TARGET_FREQ=400)>.
 
 Elaborating module <spi_stm32_fpga_bridge>.
 
-Elaborating module <spi_stm32_multi_word_bridge(READ_WORDS=29,WRITE_WORDS=10)>.
+Elaborating module <spi_stm32_multi_word_bridge(READ_WORDS=33,WRITE_WORDS=10)>.
 
 Elaborating module <debug_module(ADR_WIDTH=6,DATA_WIDTH=16)>.
 
@@ -188,11 +188,11 @@ Elaborating module <interrupt_controller(ADR_WIDTH=6,IRQ_LINES=2)>.
 
 Elaborating module <adc_block(ADR_WIDTH=6,DATA_WIDTH=16,SAMPLE_TICKS=1000)>.
 
-Elaborating module <adc_processor_2ac_2dc(SAMPLE_TICKS=1000)>.
+Elaborating module <adc_processor_4ac(RANGE1_CFG=1'b0,RANGE0_CFG=1'b0,SAMPLE_TICKS=1000)>.
 
 Elaborating module <ad7367_multi_mode>.
 
-Elaborating module <adc_processor_4dc(SAMPLE_TICKS=1000)>.
+Elaborating module <adc_processor_4dc(RANGE1_CFG=1'b0,RANGE0_CFG=1'b0,SAMPLE_TICKS=1000)>.
 
 Elaborating module <resolver_block(ADR_WIDTH=6,DATA_WIDTH=16,SAMPLE_TICKS=1000)>.
 
@@ -208,8 +208,8 @@ Elaborating module <ad5543_dac_ctrl(CLK_DIV=5)>.
 
 Synthesizing Unit <pspm_main>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v".
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 155: Output port <busy> of the instance <u_spi_config> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 210: Output port <busy> of the instance <u_spi_dma> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 163: Output port <busy> of the instance <u_spi_config> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 218: Output port <busy> of the instance <u_spi_dma> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da21_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da21_range1> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 355: Output port <da22_range0> of the instance <u_adc_subsystem> is unconnected or connected to loadless signal.
@@ -220,11 +220,11 @@ INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_
 INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 412: Output port <range0> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\pspm_main.v" line 412: Output port <range1> of the instance <u_resolver_block> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_monitor_div2>.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<5>> created at line 532.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<6>> created at line 533.
-    Found 1-bit 31-to-1 multiplexer for signal <tp<7>> created at line 534.
-    Found 16-bit 8-to-1 multiplexer for signal <_n0135> created at line 150.
-    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 228
+    Found 1-bit 31-to-1 multiplexer for signal <tp<5>> created at line 530.
+    Found 1-bit 31-to-1 multiplexer for signal <tp<6>> created at line 531.
+    Found 1-bit 31-to-1 multiplexer for signal <tp<7>> created at line 532.
+    Found 16-bit 8-to-1 multiplexer for signal <_n0135> created at line 158.
+    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 235
     Summary:
 	inferred   1 D-type flip-flop(s).
 	inferred  23 Multiplexer(s).
@@ -289,14 +289,14 @@ Unit <spi_stm32_fpga_bridge> synthesized.
 
 Synthesizing Unit <spi_stm32_multi_word_bridge>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\stm32_2_fpga_spi_bridge\spi_stm32_multi_word_bridge.v".
-        READ_WORDS = 29
+        READ_WORDS = 33
         WRITE_WORDS = 10
     Found 2-bit register for signal <nss_sync<1:0>>.
     Found 2-bit register for signal <mosi_sync>.
     Found 9-bit register for signal <bit_cnt>.
     Found 15-bit register for signal <rx_word_shifter>.
     Found 160-bit register for signal <rx_burst_buffer>.
-    Found 464-bit register for signal <tx_shifter_burst>.
+    Found 528-bit register for signal <tx_shifter_burst>.
     Found 160-bit register for signal <dout>.
     Found 1-bit register for signal <wr_strobe>.
     Found 1-bit register for signal <rd_strobe>.
@@ -306,19 +306,18 @@ Synthesizing Unit <spi_stm32_multi_word_bridge>.
     Found 4-bit register for signal <word_idx>.
     Found 1-bit register for signal <spi_out>.
     Found 2-bit register for signal <sck_sync<1:0>>.
-    Found 9-bit adder for signal <bit_cnt[8]_GND_9_o_add_16_OUT> created at line 113.
-    Found 4-bit adder for signal <word_idx[3]_GND_9_o_add_185_OUT> created at line 128.
-    Found 10-bit adder for signal <n0795> created at line 147.
-    Found 9-bit comparator greater for signal <bit_cnt[8]_PWR_9_o_LessThan_16_o> created at line 113
-    Found 9-bit comparator greater for signal <GND_9_o_bit_cnt[8]_LessThan_23_o> created at line 126
-    Found 4-bit comparator greater for signal <word_idx[3]_PWR_9_o_LessThan_25_o> created at line 126
-    Found 9-bit comparator lessequal for signal <n0210> created at line 139
-    Found 10-bit comparator lessequal for signal <n0227> created at line 147
+    Found 9-bit adder for signal <bit_cnt[8]_GND_9_o_add_15_OUT> created at line 113.
+    Found 4-bit adder for signal <word_idx[3]_GND_9_o_add_183_OUT> created at line 128.
+    Found 10-bit adder for signal <n0792> created at line 147.
+    Found 9-bit comparator greater for signal <GND_9_o_bit_cnt[8]_LessThan_21_o> created at line 126
+    Found 4-bit comparator greater for signal <word_idx[3]_PWR_9_o_LessThan_23_o> created at line 126
+    Found 9-bit comparator lessequal for signal <n0208> created at line 139
+    Found 10-bit comparator lessequal for signal <n0225> created at line 147
     Summary:
 	inferred   3 Adder/Subtractor(s).
-	inferred 828 D-type flip-flop(s).
-	inferred   5 Comparator(s).
-	inferred 173 Multiplexer(s).
+	inferred 892 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+	inferred 172 Multiplexer(s).
 Unit <spi_stm32_multi_word_bridge> synthesized.
 
 Synthesizing Unit <debug_module>.
@@ -430,80 +429,68 @@ Synthesizing Unit <adc_block>.
         ADR_WIDTH = 6
         DATA_WIDTH = 16
         SAMPLE_TICKS = 1000
-    Found 1-bit register for signal <reg_ac_sel_da22>.
-    Found 1-bit register for signal <reg_irq_en_12>.
-    Found 5-bit register for signal <shift_da21>.
-    Found 5-bit register for signal <shift_da22>.
+WARNING:Xst:647 - Input <cpu_di<13:5>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 5-bit register for signal <shift_da45>.
     Found 1-bit register for signal <hw_valid_da21>.
     Found 1-bit register for signal <hw_valid_da22>.
     Found 1-bit register for signal <hw_valid_da45>.
+    Found 16-bit register for signal <sh_da21_cnt>.
     Found 32-bit register for signal <sh_da21_ac1>.
     Found 32-bit register for signal <sh_da21_ac2>.
-    Found 16-bit register for signal <sh_da21_cnt>.
-    Found 16-bit register for signal <sh_da21_dc1>.
-    Found 16-bit register for signal <sh_da21_dc2>.
+    Found 32-bit register for signal <sh_da21_ac3>.
+    Found 32-bit register for signal <sh_da21_ac4>.
+    Found 16-bit register for signal <sh_da22_cnt>.
     Found 32-bit register for signal <sh_da22_ac1>.
     Found 32-bit register for signal <sh_da22_ac2>.
-    Found 16-bit register for signal <sh_da22_cnt>.
-    Found 16-bit register for signal <sh_da22_dc1>.
-    Found 16-bit register for signal <sh_da22_dc2>.
+    Found 32-bit register for signal <sh_da22_ac3>.
+    Found 32-bit register for signal <sh_da22_ac4>.
     Found 16-bit register for signal <sh_da45_dc1>.
     Found 16-bit register for signal <sh_da45_dc2>.
     Found 16-bit register for signal <sh_da45_dc3>.
     Found 16-bit register for signal <sh_da45_dc4>.
-    Found 1-bit register for signal <reg_ac_sel_da21>.
+    Found 1-bit register for signal <reg_irq_en_12>.
     Summary:
-	inferred 309 D-type flip-flop(s).
-	inferred  21 Multiplexer(s).
+	inferred 361 D-type flip-flop(s).
+	inferred  25 Multiplexer(s).
 Unit <adc_block> synthesized.
 
-Synthesizing Unit <adc_processor_2ac_2dc>.
-    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\adc\adc_processor_2ac_2dc.v".
+Synthesizing Unit <adc_processor_4ac>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\adc\adc_processor_4ac.v".
         RANGE1_CFG = 1'b0
         RANGE0_CFG = 1'b0
         SAMPLE_TICKS = 1000
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\adc\adc_processor_2ac_2dc.v" line 76: Output port <module_busy> of the instance <u_adc> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\adc\adc_processor_2ac_2dc.v" line 76: Output port <err_timeout> of the instance <u_adc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\adc\adc_processor_4ac.v" line 81: Output port <module_busy> of the instance <u_adc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\adc\adc_processor_4ac.v" line 81: Output port <err_timeout> of the instance <u_adc> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <start_pulse>.
     Found 1-bit register for signal <comp_d>.
-    Found 32-bit register for signal <acc_ac1_int>.
-    Found 32-bit register for signal <acc_ac2_int>.
-    Found 16-bit register for signal <cnt_ac_int>.
-    Found 32-bit register for signal <acc_ac_1>.
-    Found 32-bit register for signal <acc_ac_2>.
-    Found 16-bit register for signal <cnt_ac>.
+    Found 32-bit register for signal <int_ch1>.
+    Found 32-bit register for signal <int_ch2>.
+    Found 32-bit register for signal <int_ch3>.
+    Found 32-bit register for signal <int_ch4>.
+    Found 16-bit register for signal <cnt_int>.
+    Found 32-bit register for signal <acc_ch1>.
+    Found 32-bit register for signal <acc_ch2>.
+    Found 32-bit register for signal <acc_ch3>.
+    Found 32-bit register for signal <acc_ch4>.
+    Found 16-bit register for signal <cnt_samples>.
     Found 1-bit register for signal <ready_ac>.
-    Found 16-bit register for signal <decimation_cnt>.
-    Found 32-bit register for signal <acc_dc1_int>.
-    Found 32-bit register for signal <acc_dc2_int>.
-    Found 16-bit register for signal <acc_dc_1>.
-    Found 16-bit register for signal <acc_dc_2>.
-    Found 1-bit register for signal <ready_dc>.
     Found 10-bit register for signal <sampling_timer>.
-    Found 16-bit subtractor for signal <decimation_max> created at line 53.
-    Found 32-bit subtractor for signal <acc_ac1_int[31]_ext_ac_1[31]_sub_27_OUT> created at line 145.
-    Found 32-bit subtractor for signal <acc_ac2_int[31]_ext_ac_2[31]_sub_28_OUT> created at line 146.
-    Found 10-bit adder for signal <sampling_timer[9]_GND_18_o_add_6_OUT> created at line 67.
-    Found 32-bit adder for signal <acc_ac1_int[31]_ext_ac_1[31]_add_24_OUT> created at line 142.
-    Found 32-bit adder for signal <acc_ac2_int[31]_ext_ac_2[31]_add_25_OUT> created at line 143.
-    Found 16-bit adder for signal <cnt_ac_int[15]_GND_18_o_add_30_OUT> created at line 148.
-    Found 32-bit adder for signal <final_dc_1> created at line 156.
-    Found 32-bit adder for signal <final_dc_2> created at line 157.
-    Found 16-bit adder for signal <decimation_cnt[15]_GND_18_o_add_60_OUT> created at line 180.
-    Found 16-bit shifter logical left for signal <GND_18_o_safe_shift[4]_shift_left_2_OUT> created at line 53
-    Found 48-bit shifter logical right for signal <n0141> created at line 170
-    Found 48-bit shifter logical right for signal <n0142> created at line 171
-    Found 5-bit comparator greater for signal <PWR_19_o_shift_sel[4]_LessThan_1_o> created at line 52
-    Found 10-bit comparator greater for signal <n0004> created at line 63
-    Found 16-bit comparator greater for signal <n0058> created at line 169
+    Found 32-bit subtractor for signal <int_ch1[31]_ext_ch1[31]_sub_17_OUT> created at line 158.
+    Found 32-bit subtractor for signal <int_ch2[31]_ext_ch2[31]_sub_18_OUT> created at line 159.
+    Found 32-bit subtractor for signal <int_ch3[31]_ext_ch3[31]_sub_19_OUT> created at line 160.
+    Found 32-bit subtractor for signal <int_ch4[31]_ext_ch4[31]_sub_20_OUT> created at line 161.
+    Found 10-bit adder for signal <sampling_timer[9]_GND_18_o_add_2_OUT> created at line 69.
+    Found 32-bit adder for signal <int_ch1[31]_ext_ch1[31]_add_12_OUT> created at line 153.
+    Found 32-bit adder for signal <int_ch2[31]_ext_ch2[31]_add_13_OUT> created at line 154.
+    Found 32-bit adder for signal <int_ch3[31]_ext_ch3[31]_add_14_OUT> created at line 155.
+    Found 32-bit adder for signal <int_ch4[31]_ext_ch4[31]_add_15_OUT> created at line 156.
+    Found 16-bit adder for signal <cnt_int[15]_GND_18_o_add_24_OUT> created at line 163.
+    Found 10-bit comparator greater for signal <n0000> created at line 65
     Summary:
-	inferred   8 Adder/Subtractor(s).
-	inferred 286 D-type flip-flop(s).
-	inferred   3 Comparator(s).
-	inferred   6 Multiplexer(s).
-	inferred   3 Combinational logic shifter(s).
-Unit <adc_processor_2ac_2dc> synthesized.
+	inferred   6 Adder/Subtractor(s).
+	inferred 301 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <adc_processor_4ac> synthesized.
 
 Synthesizing Unit <ad7367_multi_mode>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analog_modules\ad7367_multi_mode.v".
@@ -532,15 +519,15 @@ WARNING:Xst:647 - Input <mode> is never used. This port will be preserved and le
     | Inputs             | 10                                             |
     | Outputs            | 11                                             |
     | Clock              | clk (rising_edge)                              |
-    | Reset              | rst_n_INV_83_o (positive)                      |
+    | Reset              | rst_n_INV_67_o (positive)                      |
     | Reset type         | synchronous                                    |
     | Reset State        | 0000                                           |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 4-bit subtractor for signal <bit_cnt[3]_GND_20_o_sub_36_OUT> created at line 187.
-    Found 2-bit adder for signal <sclk_cnt[1]_GND_20_o_add_29_OUT> created at line 178.
-    Found 8-bit adder for signal <timer[7]_GND_20_o_add_52_OUT> created at line 228.
+    Found 4-bit subtractor for signal <bit_cnt[3]_GND_19_o_sub_36_OUT> created at line 187.
+    Found 2-bit adder for signal <sclk_cnt[1]_GND_19_o_add_29_OUT> created at line 178.
+    Found 8-bit adder for signal <timer[7]_GND_19_o_add_52_OUT> created at line 228.
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred 113 D-type flip-flop(s).
@@ -568,18 +555,18 @@ INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\analo
     Found 1-bit register for signal <ready_dc>.
     Found 10-bit register for signal <sampling_timer>.
     Found 16-bit subtractor for signal <decimation_max> created at line 38.
-    Found 10-bit adder for signal <sampling_timer[9]_GND_21_o_add_6_OUT> created at line 52.
+    Found 10-bit adder for signal <sampling_timer[9]_GND_20_o_add_6_OUT> created at line 52.
     Found 32-bit adder for signal <final_ch1> created at line 94.
     Found 32-bit adder for signal <final_ch2> created at line 95.
     Found 32-bit adder for signal <final_ch3> created at line 96.
     Found 32-bit adder for signal <final_ch4> created at line 97.
-    Found 16-bit adder for signal <decimation_cnt[15]_GND_21_o_add_28_OUT> created at line 124.
-    Found 16-bit shifter logical left for signal <GND_21_o_safe_shift[4]_shift_left_2_OUT> created at line 38
+    Found 16-bit adder for signal <decimation_cnt[15]_GND_20_o_add_28_OUT> created at line 124.
+    Found 16-bit shifter logical left for signal <GND_20_o_safe_shift[4]_shift_left_2_OUT> created at line 38
     Found 48-bit shifter logical right for signal <n0096> created at line 110
     Found 48-bit shifter logical right for signal <n0097> created at line 111
     Found 48-bit shifter logical right for signal <n0098> created at line 112
     Found 48-bit shifter logical right for signal <n0099> created at line 113
-    Found 5-bit comparator greater for signal <PWR_23_o_shift_sel[4]_LessThan_1_o> created at line 37
+    Found 5-bit comparator greater for signal <PWR_22_o_shift_sel[4]_LessThan_1_o> created at line 37
     Found 10-bit comparator lessequal for signal <n0004> created at line 48
     Found 16-bit comparator greater for signal <n0021> created at line 109
     Summary:
@@ -724,58 +711,58 @@ HDL Synthesis Report
 Macro Statistics
 # RAMs                                                 : 1
  16x16-bit single-port Read Only RAM                   : 1
-# Adders/Subtractors                                   : 64
+# Adders/Subtractors                                   : 60
  10-bit adder                                          : 5
- 16-bit adder                                          : 12
- 16-bit subtractor                                     : 3
+ 16-bit adder                                          : 10
+ 16-bit subtractor                                     : 1
  17-bit adder                                          : 1
  17-bit subtractor                                     : 4
  18-bit adder                                          : 1
  2-bit adder                                           : 4
  3-bit adder                                           : 1
- 32-bit adder                                          : 8
- 32-bit addsub                                         : 8
+ 32-bit adder                                          : 4
+ 32-bit addsub                                         : 12
  4-bit adder                                           : 5
  4-bit subtractor                                      : 6
  6-bit adder                                           : 1
  8-bit adder                                           : 4
  9-bit adder                                           : 1
-# Registers                                            : 247
- 1-bit register                                        : 85
+# Registers                                            : 239
+ 1-bit register                                        : 81
  10-bit register                                       : 7
  14-bit register                                       : 8
  144-bit register                                      : 1
  15-bit register                                       : 3
- 16-bit register                                       : 64
+ 16-bit register                                       : 54
  160-bit register                                      : 3
  17-bit register                                       : 1
  18-bit register                                       : 1
  2-bit register                                        : 19
  3-bit register                                        : 1
- 32-bit register                                       : 28
+ 32-bit register                                       : 36
  4-bit register                                        : 13
- 464-bit register                                      : 1
- 5-bit register                                        : 4
+ 5-bit register                                        : 2
+ 528-bit register                                      : 1
  6-bit register                                        : 1
  8-bit register                                        : 6
  9-bit register                                        : 1
-# Comparators                                          : 35
+# Comparators                                          : 30
  1-bit comparator equal                                : 2
  10-bit comparator greater                             : 2
  10-bit comparator lessequal                           : 3
- 16-bit comparator greater                             : 7
+ 16-bit comparator greater                             : 5
  17-bit comparator greater                             : 1
  18-bit comparator greater                             : 3
  18-bit comparator lessequal                           : 1
  32-bit comparator greater                             : 4
  4-bit comparator greater                              : 1
  4-bit comparator lessequal                            : 2
- 5-bit comparator greater                              : 3
+ 5-bit comparator greater                              : 1
  6-bit comparator greater                              : 1
  6-bit comparator lessequal                            : 2
- 9-bit comparator greater                              : 2
+ 9-bit comparator greater                              : 1
  9-bit comparator lessequal                            : 1
-# Multiplexers                                         : 414
+# Multiplexers                                         : 405
  1-bit 10-to-1 multiplexer                             : 2
  1-bit 2-to-1 multiplexer                              : 67
  1-bit 31-to-1 multiplexer                             : 3
@@ -787,21 +774,21 @@ Macro Statistics
  15-bit 2-to-1 multiplexer                             : 3
  16-bit 10-to-1 multiplexer                            : 1
  16-bit 13-to-1 multiplexer                            : 1
- 16-bit 2-to-1 multiplexer                             : 231
+ 16-bit 2-to-1 multiplexer                             : 225
  16-bit 4-to-1 multiplexer                             : 4
  16-bit 8-to-1 multiplexer                             : 1
  2-bit 2-to-1 multiplexer                              : 8
  3-bit 2-to-1 multiplexer                              : 1
  32-bit 2-to-1 multiplexer                             : 8
  4-bit 2-to-1 multiplexer                              : 22
- 5-bit 2-to-1 multiplexer                              : 4
+ 5-bit 2-to-1 multiplexer                              : 2
  6-bit 2-to-1 multiplexer                              : 1
  7-bit 2-to-1 multiplexer                              : 1
  8-bit 2-to-1 multiplexer                              : 45
- 9-bit 2-to-1 multiplexer                              : 4
-# Logic shifters                                       : 11
- 16-bit shifter logical left                           : 3
- 48-bit shifter logical right                          : 8
+ 9-bit 2-to-1 multiplexer                              : 3
+# Logic shifters                                       : 5
+ 16-bit shifter logical left                           : 1
+ 48-bit shifter logical right                          : 4
 # Tristates                                            : 1
  1-bit tristate buffer                                 : 1
 # FSMs                                                 : 5
@@ -838,15 +825,14 @@ The following registers are absorbed into counter <bit_cnt>: 1 register on signa
 The following registers are absorbed into counter <sclk_cnt>: 1 register on signal <sclk_cnt>.
 Unit <ad7367_multi_mode> synthesized (advanced).
 
-Synthesizing (advanced) Unit <adc_processor_2ac_2dc>.
-The following registers are absorbed into accumulator <acc_ac2_int>: 1 register on signal <acc_ac2_int>.
-The following registers are absorbed into accumulator <acc_ac1_int>: 1 register on signal <acc_ac1_int>.
-The following registers are absorbed into accumulator <acc_dc1_int>: 1 register on signal <acc_dc1_int>.
-The following registers are absorbed into accumulator <acc_dc2_int>: 1 register on signal <acc_dc2_int>.
+Synthesizing (advanced) Unit <adc_processor_4ac>.
+The following registers are absorbed into accumulator <int_ch1>: 1 register on signal <int_ch1>.
+The following registers are absorbed into accumulator <int_ch2>: 1 register on signal <int_ch2>.
+The following registers are absorbed into accumulator <int_ch4>: 1 register on signal <int_ch4>.
+The following registers are absorbed into accumulator <int_ch3>: 1 register on signal <int_ch3>.
 The following registers are absorbed into counter <sampling_timer>: 1 register on signal <sampling_timer>.
-The following registers are absorbed into counter <cnt_ac_int>: 1 register on signal <cnt_ac_int>.
-The following registers are absorbed into counter <decimation_cnt>: 1 register on signal <decimation_cnt>.
-Unit <adc_processor_2ac_2dc> synthesized (advanced).
+The following registers are absorbed into counter <cnt_int>: 1 register on signal <cnt_int>.
+Unit <adc_processor_4ac> synthesized (advanced).
 
 Synthesizing (advanced) Unit <adc_processor_4dc>.
 The following registers are absorbed into counter <sampling_timer>: 1 register on signal <sampling_timer>.
@@ -907,18 +893,18 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # RAMs                                                 : 1
  16x16-bit single-port distributed Read Only RAM       : 1
-# Adders/Subtractors                                   : 26
+# Adders/Subtractors                                   : 20
  10-bit adder                                          : 1
  16-bit adder                                          : 2
- 16-bit subtractor                                     : 3
+ 16-bit subtractor                                     : 1
  17-bit subtractor                                     : 4
- 32-bit adder                                          : 8
+ 32-bit adder                                          : 4
  4-bit adder                                           : 3
  8-bit adder                                           : 4
  9-bit adder                                           : 1
-# Counters                                             : 30
+# Counters                                             : 28
  10-bit up counter                                     : 4
- 16-bit up counter                                     : 10
+ 16-bit up counter                                     : 8
  17-bit up counter                                     : 1
  18-bit up counter                                     : 1
  2-bit up counter                                      : 4
@@ -927,45 +913,44 @@ Macro Statistics
  4-bit up counter                                      : 2
  6-bit up counter                                      : 1
 # Accumulators                                         : 12
- 32-bit up accumulator                                 : 4
- 32-bit updown accumulator                             : 4
+ 32-bit updown accumulator                             : 8
  32-bit updown loadable accumulator                    : 4
-# Registers                                            : 2863
- Flip-Flops                                            : 2863
-# Comparators                                          : 35
+# Registers                                            : 3041
+ Flip-Flops                                            : 3041
+# Comparators                                          : 30
  1-bit comparator equal                                : 2
  10-bit comparator greater                             : 2
  10-bit comparator lessequal                           : 3
- 16-bit comparator greater                             : 7
+ 16-bit comparator greater                             : 5
  17-bit comparator greater                             : 1
  18-bit comparator greater                             : 3
  18-bit comparator lessequal                           : 1
  32-bit comparator greater                             : 4
  4-bit comparator greater                              : 1
  4-bit comparator lessequal                            : 2
- 5-bit comparator greater                              : 3
+ 5-bit comparator greater                              : 1
  6-bit comparator greater                              : 1
  6-bit comparator lessequal                            : 2
- 9-bit comparator greater                              : 2
+ 9-bit comparator greater                              : 1
  9-bit comparator lessequal                            : 1
-# Multiplexers                                         : 3290
+# Multiplexers                                         : 3341
  1-bit 10-to-1 multiplexer                             : 18
- 1-bit 2-to-1 multiplexer                              : 3145
+ 1-bit 2-to-1 multiplexer                              : 3209
  1-bit 31-to-1 multiplexer                             : 3
  15-bit 2-to-1 multiplexer                             : 2
  16-bit 13-to-1 multiplexer                            : 1
- 16-bit 2-to-1 multiplexer                             : 44
+ 16-bit 2-to-1 multiplexer                             : 34
  16-bit 4-to-1 multiplexer                             : 4
  16-bit 8-to-1 multiplexer                             : 1
  2-bit 2-to-1 multiplexer                              : 3
  32-bit 2-to-1 multiplexer                             : 4
  4-bit 2-to-1 multiplexer                              : 15
- 5-bit 2-to-1 multiplexer                              : 3
+ 5-bit 2-to-1 multiplexer                              : 1
  8-bit 2-to-1 multiplexer                              : 44
- 9-bit 2-to-1 multiplexer                              : 3
-# Logic shifters                                       : 11
- 16-bit shifter logical left                           : 3
- 48-bit shifter logical right                          : 8
+ 9-bit 2-to-1 multiplexer                              : 2
+# Logic shifters                                       : 5
+ 16-bit shifter logical left                           : 1
+ 48-bit shifter logical right                          : 4
 # FSMs                                                 : 5
 
 =========================================================================
@@ -1056,7 +1041,7 @@ Optimizing unit <adc_processor_resolver> ...
 
 Optimizing unit <adc_block> ...
 
-Optimizing unit <adc_processor_2ac_2dc> ...
+Optimizing unit <adc_processor_4ac> ...
 
 Optimizing unit <adc_processor_4dc> ...
 
@@ -1091,16 +1076,9 @@ INFO:Xst:2261 - The FF/Latch <u_spi_config/mosi_sync_1> in Unit <pspm_main> is e
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block pspm_main, actual ratio is 112.
+Found area constraint ratio of 100 (+ 5) on block pspm_main, actual ratio is 108.
 Optimizing block <pspm_main> to meet ratio 100 (+ 5) of 1430 slices :
-Area constraint is met for block <pspm_main>, final ratio is 103.
-FlipFlop u_adc_subsystem/shift_da45_4 has been replicated 1 time(s)
-FlipFlop u_spi_config/addr_2 has been replicated 1 time(s)
-FlipFlop u_spi_config/addr_3 has been replicated 1 time(s)
-FlipFlop u_spi_config/addr_4 has been replicated 1 time(s)
-FlipFlop u_spi_config/addr_6 has been replicated 2 time(s)
-FlipFlop u_spi_config/addr_7 has been replicated 2 time(s)
-FlipFlop u_spi_config/addr_8 has been replicated 2 time(s)
+Area constraint is met for block <pspm_main>, final ratio is 104.
 
 Final Macro Processing ...
 
@@ -1113,8 +1091,8 @@ Unit <pspm_main> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 3489
- Flip-Flops                                            : 3489
+# Registers                                            : 3625
+ Flip-Flops                                            : 3625
 # Shift Registers                                      : 1
  2-bit shift register                                  : 1
 
@@ -1139,28 +1117,28 @@ Top Level Output File Name         : pspm_main.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 5821
+# BELS                             : 5022
 #      GND                         : 1
-#      INV                         : 82
-#      LUT1                        : 187
-#      LUT2                        : 181
-#      LUT3                        : 221
-#      LUT4                        : 701
-#      LUT5                        : 678
-#      LUT6                        : 1696
-#      MUXCY                       : 1032
-#      MUXF7                       : 48
+#      INV                         : 80
+#      LUT1                        : 157
+#      LUT2                        : 174
+#      LUT3                        : 441
+#      LUT4                        : 357
+#      LUT5                        : 480
+#      LUT6                        : 1650
+#      MUXCY                       : 834
+#      MUXF7                       : 46
 #      VCC                         : 1
-#      XORCY                       : 993
-# FlipFlops/Latches                : 3490
-#      FD                          : 16
+#      XORCY                       : 801
+# FlipFlops/Latches                : 3626
+#      FD                          : 14
 #      FDC                         : 1
 #      FDE                         : 9
 #      FDP                         : 8
-#      FDR                         : 168
-#      FDRE                        : 3240
+#      FDR                         : 169
+#      FDRE                        : 3380
 #      FDS                         : 15
-#      FDSE                        : 33
+#      FDSE                        : 30
 # Shift Registers                  : 1
 #      SRLC16E                     : 1
 # Clock Buffers                    : 3
@@ -1182,18 +1160,18 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            3490  out of  11440    30%  
- Number of Slice LUTs:                 3747  out of   5720    65%  
-    Number used as Logic:              3746  out of   5720    65%  
+ Number of Slice Registers:            3626  out of  11440    31%  
+ Number of Slice LUTs:                 3340  out of   5720    58%  
+    Number used as Logic:              3339  out of   5720    58%  
     Number used as Memory:                1  out of   1440     0%  
        Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   5584
-   Number with an unused Flip Flop:    2094  out of   5584    37%  
-   Number with an unused LUT:          1837  out of   5584    32%  
-   Number of fully used LUT-FF pairs:  1653  out of   5584    29%  
-   Number of unique control sets:       119
+ Number of LUT Flip Flop pairs used:   5250
+   Number with an unused Flip Flop:    1624  out of   5250    30%  
+   Number with an unused LUT:          1910  out of   5250    36%  
+   Number of fully used LUT-FF pairs:  1716  out of   5250    32%  
+   Number of unique control sets:       109
 
 IO Utilization: 
  Number of IOs:                          65
@@ -1223,7 +1201,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk_60mHz                          | DCM_SP:CLKFX           | 3479  |
+clk_60mHz                          | DCM_SP:CLKFX           | 3615  |
 clk_60mHz                          | IBUFG                  | 4     |
 u_multiboot/icap_clk_reg           | BUFG                   | 8     |
 -----------------------------------+------------------------+-------+
@@ -1236,9 +1214,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 17.497ns (Maximum Frequency: 57.151MHz)
-   Minimum input arrival time before clock: 5.828ns
-   Maximum output required time after clock: 9.456ns
+   Minimum period: 21.169ns (Maximum Frequency: 47.240MHz)
+   Minimum input arrival time before clock: 5.933ns
+   Maximum output required time after clock: 9.659ns
    Maximum combinational path delay: 8.615ns
 
 Timing Details:
@@ -1247,33 +1225,33 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_60mHz'
-  Clock period: 17.497ns (frequency: 57.151MHz)
-  Total number of paths / destination ports: 1034181 / 10198
+  Clock period: 21.169ns (frequency: 47.240MHz)
+  Total number of paths / destination ports: 639030 / 10609
 -------------------------------------------------------------------------
-Delay:               10.498ns (Levels of Logic = 9)
-  Source:            u_spi_config/addr_9 (FF)
-  Destination:       u_spi_config/tx_shifter_1 (FF)
+Delay:               12.701ns (Levels of Logic = 9)
+  Source:            u_spi_config/addr_8 (FF)
+  Destination:       u_spi_config/tx_shifter_2 (FF)
   Source Clock:      clk_60mHz rising 1.7X
   Destination Clock: clk_60mHz rising 1.7X
 
-  Data Path: u_spi_config/addr_9 to u_spi_config/tx_shifter_1
+  Data Path: u_spi_config/addr_8 to u_spi_config/tx_shifter_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            18   0.525   1.235  u_spi_config/addr_9 (u_spi_config/addr_9)
-     LUT5:I4->O            3   0.254   0.766  rd_dev_s<6>1_1 (rd_dev_s<6>1)
-     LUT3:I2->O            3   0.254   0.766  u_adc_subsystem/rd_da21_ac1_h11_1 (u_adc_subsystem/rd_da21_ac1_h11)
-     LUT5:I4->O           27   0.254   1.436  u_adc_subsystem/rd_da22_dc21 (u_adc_subsystem/rd_da22_dc2)
-     LUT4:I3->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT819 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT818)
-     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT820 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT819)
-     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT821 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT820)
-     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT822 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT821)
-     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT823 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT822)
-     LUT6:I5->O            1   0.254   0.000  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT832 (u_spi_config/tx_shifter[15]_tx_shifter[15]_mux_28_OUT<1>)
-     FDRE:D                    0.074          u_spi_config/tx_shifter_1
+     FDRE:C->Q            83   0.525   2.077  u_spi_config/addr_8 (u_spi_config/addr_8)
+     LUT5:I4->O           15   0.254   1.155  rd_dev_s<6>1 (rd_dev_s<6>)
+     LUT3:I2->O           46   0.254   1.754  u_adc_subsystem/rd_da21_ac1_h11 (u_adc_subsystem/rd_da21_ac1_h1)
+     LUT5:I4->O           19   0.254   1.261  u_adc_subsystem/rd_da22_ac2_h1 (u_adc_subsystem/rd_da22_ac2_h)
+     LUT6:I5->O            5   0.254   0.841  u_adc_subsystem/Mmux_cpu_do3111 (u_adc_subsystem/Mmux_cpu_do311)
+     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT923 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT922)
+     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT924 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT923)
+     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT925 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT924)
+     LUT6:I5->O            1   0.254   0.682  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT926 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT925)
+     LUT6:I5->O            1   0.254   0.000  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT935 (u_spi_config/tx_shifter[15]_tx_shifter[15]_mux_28_OUT<2>)
+     FDRE:D                    0.074          u_spi_config/tx_shifter_2
     ----------------------------------------
-    Total                     10.498ns (2.885ns logic, 7.613ns route)
-                                       (27.5% logic, 72.5% route)
+    Total                     12.701ns (2.885ns logic, 9.816ns route)
+                                       (22.7% logic, 77.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'u_multiboot/icap_clk_reg'
@@ -1301,7 +1279,7 @@ Delay:               2.807ns (Levels of Logic = 1)
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_60mHz'
   Total number of paths / destination ports: 19 / 19
 -------------------------------------------------------------------------
-Offset:              5.828ns (Levels of Logic = 5)
+Offset:              5.933ns (Levels of Logic = 5)
   Source:            res_busy (PAD)
   Destination:       u_spi_config/tx_shifter_2 (FF)
   Destination Clock: clk_60mHz rising 1.7X
@@ -1313,18 +1291,18 @@ Offset:              5.828ns (Levels of Logic = 5)
      IBUF:I->O             2   1.328   0.726  res_busy_IBUF (res_busy_IBUF)
      LUT5:I4->O            1   0.254   1.112  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT928 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT927)
      LUT6:I1->O            1   0.254   0.790  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT929 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT928)
-     LUT6:I4->O            1   0.250   0.790  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT934 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT933)
-     LUT6:I4->O            1   0.250   0.000  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT935 (u_spi_config/tx_shifter[15]_tx_shifter[15]_mux_28_OUT<2>)
+     LUT6:I4->O            1   0.250   0.910  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT934 (u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT933)
+     LUT6:I3->O            1   0.235   0.000  u_spi_config/Mmux_tx_shifter[15]_tx_shifter[15]_mux_28_OUT935 (u_spi_config/tx_shifter[15]_tx_shifter[15]_mux_28_OUT<2>)
      FDRE:D                    0.074          u_spi_config/tx_shifter_2
     ----------------------------------------
-    Total                      5.828ns (2.410ns logic, 3.418ns route)
-                                       (41.4% logic, 58.6% route)
+    Total                      5.933ns (2.395ns logic, 3.538ns route)
+                                       (40.4% logic, 59.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_60mHz'
   Total number of paths / destination ports: 315 / 42
 -------------------------------------------------------------------------
-Offset:              9.456ns (Levels of Logic = 5)
+Offset:              9.659ns (Levels of Logic = 5)
   Source:            u_spi_config/addr_7 (FF)
   Destination:       tp<7> (PAD)
   Source Clock:      clk_60mHz rising 1.7X
@@ -1333,15 +1311,15 @@ Offset:              9.456ns (Levels of Logic = 5)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            61   0.525   2.336  u_spi_config/addr_7 (u_spi_config/addr_7)
-     LUT5:I0->O            7   0.254   1.186  wr_dev_s<1>1 (wr_dev_s<1>)
-     LUT6:I2->O            1   0.254   0.910  Mmux_tp<5>_10 (Mmux_tp<5>_10)
+     FDRE:C->Q            64   0.525   2.360  u_spi_config/addr_7 (u_spi_config/addr_7)
+     LUT5:I0->O           19   0.254   1.369  rd_dev_s<1>1 (rd_dev_s<1>)
+     LUT6:I4->O            1   0.250   0.910  Mmux_tp<5>_10 (Mmux_tp<5>_10)
      LUT6:I3->O            1   0.235   0.000  Mmux_tp<5>_41 (Mmux_tp<5>_4)
      MUXF7:I0->O           1   0.163   0.681  Mmux_tp<5>_2_f7 (tp_5_OBUF)
      OBUF:I->O                 2.912          tp_5_OBUF (tp<5>)
     ----------------------------------------
-    Total                      9.456ns (4.343ns logic, 5.113ns route)
-                                       (45.9% logic, 54.1% route)
+    Total                      9.659ns (4.339ns logic, 5.320ns route)
+                                       (44.9% logic, 55.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'u_multiboot/icap_clk_reg'
@@ -1395,7 +1373,7 @@ Clock to Setup on destination clock clk_60mHz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_60mHz      |   10.498|         |         |         |
+clk_60mHz      |   12.701|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock u_multiboot/icap_clk_reg
@@ -1403,21 +1381,21 @@ Clock to Setup on destination clock u_multiboot/icap_clk_reg
                         | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------+---------+---------+---------+---------+
-clk_60mHz               |    5.307|         |         |         |
+clk_60mHz               |    5.354|         |         |         |
 u_multiboot/icap_clk_reg|    2.807|         |         |         |
 ------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 10.73 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.27 secs
  
 --> 
 
-Total memory usage is 4587640 kilobytes
+Total memory usage is 4546180 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    2 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
 Number of infos    :   55 (   0 filtered)
 
