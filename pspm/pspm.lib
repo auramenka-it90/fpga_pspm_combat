@@ -1,121 +1,121 @@
-timestamp=1787843782020
+timestamp=1787930280495
 
 [$root]
-A/$root=22|""|0|1*5909146
-BinI32/$root=3*3637992
+A/$root=22|""|0|1*6067870
+BinI32/$root=3*3739083
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [ad5543_dac_ctrl]
-A/ad5543_dac_ctrl=22|./../src/analog_modules/dac/ad5543_dac_ctrl.v|3|1*6023005
-BinI32/ad5543_dac_ctrl=3*3713318
+A/ad5543_dac_ctrl=22|./../src/analog_modules/dac/ad5543_dac_ctrl.v|3|1*6181972
+BinI32/ad5543_dac_ctrl=3*3814734
 R=./../src/analog_modules/dac/ad5543_dac_ctrl.v|3
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [ad7367_multi_mode]
-A/ad7367_multi_mode=22|./../src/analog_modules/ad7367_multi_mode.v|19|1*6015680
-BinI32/ad7367_multi_mode=3*3710396
+A/ad7367_multi_mode=22|./../src/analog_modules/ad7367_multi_mode.v|19|1*6174647
+BinI32/ad7367_multi_mode=3*3811804
 R=./../src/analog_modules/ad7367_multi_mode.v|19
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [adc_block]
-A/adc_block=22|./../src/analog_modules/adc/adc_block.v|26|1*5980340
-BinI32/adc_block=3*3682807
+A/adc_block=22|./../src/analog_modules/adc/adc_block.v|26|1*6139307
+BinI32/adc_block=3*3784232
 R=./../src/analog_modules/adc/adc_block.v|26
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [adc_processor_2ac_2dc]
-A/adc_processor_2ac_2dc=22|./../src/analog_modules/adc/adc_processor_2ac_2dc.v|6|1*6045539
-BinI32/adc_processor_2ac_2dc=3*3727333
+A/adc_processor_2ac_2dc=22|./../src/analog_modules/adc/adc_processor_2ac_2dc.v|6|1*6204506
+BinI32/adc_processor_2ac_2dc=3*3828662
 R=./../src/analog_modules/adc/adc_processor_2ac_2dc.v|6
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [adc_processor_4ac]
-A/adc_processor_4ac=22|./../src/analog_modules/adc/adc_processor_4ac.v|9|1*6028070
-BinI32/adc_processor_4ac=3*3718026
+A/adc_processor_4ac=22|./../src/analog_modules/adc/adc_processor_4ac.v|9|1*6187037
+BinI32/adc_processor_4ac=3*3819443
 R=./../src/analog_modules/adc/adc_processor_4ac.v|9
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [adc_processor_4dc]
-A/adc_processor_4dc=22|./../src/analog_modules/adc/adc_processor_4dc.v|6|1*6036339
-BinI32/adc_processor_4dc=3*3722806
+A/adc_processor_4dc=22|./../src/analog_modules/adc/adc_processor_4dc.v|6|1*6195306
+BinI32/adc_processor_4dc=3*3824232
 R=./../src/analog_modules/adc/adc_processor_4dc.v|6
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [adc_processor_resolver]
-A/adc_processor_resolver=22|./../src/analog_modules/rdc/adc_processor_resolver.v|6|1*6055947
-BinI32/adc_processor_resolver=3*3732857
+A/adc_processor_resolver=22|./../src/analog_modules/rdc/adc_processor_resolver.v|6|1*6214914
+BinI32/adc_processor_resolver=3*3834179
 R=./../src/analog_modules/rdc/adc_processor_resolver.v|6
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [bist_generator]
-A/bist_generator=22|./../src/bist_generator.v|26|1*5940627
-BinI32/bist_generator=3*3646328
+A/bist_generator=22|./../src/bist_generator.v|26|1*6099367
+BinI32/bist_generator=3*3747386
 R=./../src/bist_generator.v|26
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [comp_debounce_dyn]
-A/comp_debounce_dyn=22|./../src/modules/comp_debounce_dyn.v|14|1*6065440
-BinI32/comp_debounce_dyn=3*3737930
+A/comp_debounce_dyn=22|./../src/modules/comp_debounce_dyn.v|14|1*6224407
+BinI32/comp_debounce_dyn=3*3839235
 R=./../src/modules/comp_debounce_dyn.v|14
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [comparator_block]
-A/comparator_block=22|./../src/modules/comparator_block.v|40|1*5964376
-BinI32/comparator_block=3*3665770
+A/comparator_block=22|./../src/modules/comparator_block.v|40|1*6123343
+BinI32/comparator_block=3*3767024
 R=./../src/modules/comparator_block.v|40
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [dac_ad5543_block]
-A/dac_ad5543_block=22|./../src/analog_modules/dac/dac_ad5543_block.v|13|1*6008280
-BinI32/dac_ad5543_block=3*3705924
+A/dac_ad5543_block=22|./../src/analog_modules/dac/dac_ad5543_block.v|13|1*6167247
+BinI32/dac_ad5543_block=3*3807341
 R=./../src/analog_modules/dac/dac_ad5543_block.v|13
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [debug_module]
-A/debug_module=22|./../src/modules/debug_module.v|21|1*5953925
-BinI32/debug_module=3*3657862
+A/debug_module=22|./../src/modules/debug_module.v|21|1*6112665
+BinI32/debug_module=3*3758910
 R=./../src/modules/debug_module.v|21
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [interrupt_controller]
-A/interrupt_controller=22|./../src/modules/interrupt_controller.v|4|1*5973810
-BinI32/interrupt_controller=3*3674047
+A/interrupt_controller=22|./../src/modules/interrupt_controller.v|4|1*6132777
+BinI32/interrupt_controller=3*3775389
 R=./../src/modules/interrupt_controller.v|4
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [multiboot_icap]
-A/multiboot_icap=22|./../src/multiboot_icap.v|15|1*5959624
-BinI32/multiboot_icap=3*3662392
-R=./../src/multiboot_icap.v|15
+A/multiboot_icap=22|./../src/multiboot_icap.v|20|1*6118364
+BinI32/multiboot_icap=3*3763474
+R=./../src/multiboot_icap.v|20
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [pspm_main]
-A/pspm_main=22|./../src/pspm_main.v|27|1*5909536
-BinI32/pspm_main=3*3638131
+A/pspm_main=22|./../src/pspm_main.v|27|1*6068276
+BinI32/pspm_main=3*3739222
 R=./../src/pspm_main.v|27
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [resolver_block]
-A/resolver_block=22|./../src/analog_modules/rdc/resolver_block.v|37|1*5996908
-BinI32/resolver_block=3*3697098
+A/resolver_block=22|./../src/analog_modules/rdc/resolver_block.v|37|1*6155875
+BinI32/resolver_block=3*3798515
 R=./../src/analog_modules/rdc/resolver_block.v|37
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [spi_stm32_fpga_bridge]
-A/spi_stm32_fpga_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v|15|1*5943958
-BinI32/spi_stm32_fpga_bridge=3*3649150
+A/spi_stm32_fpga_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v|15|1*6102698
+BinI32/spi_stm32_fpga_bridge=3*3750216
 R=./../src/stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v|15
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [spi_stm32_multi_word_bridge]
-A/spi_stm32_multi_word_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v|16|1*5948168
-BinI32/spi_stm32_multi_word_bridge=3*3651033
+A/spi_stm32_multi_word_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v|16|1*6106908
+BinI32/spi_stm32_multi_word_bridge=3*3752122
 R=./../src/stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v|16
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
 [system_clk_rst]
-A/system_clk_rst=22|./../src/system_clk_rst.v|19|1*5934758
-BinI32/system_clk_rst=3*3643650
+A/system_clk_rst=22|./../src/system_clk_rst.v|19|1*6093498
+BinI32/system_clk_rst=3*3744699
 R=./../src/system_clk_rst.v|19
 Version=9.2.2499.4581  (Windows)|00000026789cd3cd5128282ec855d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00d7c70bfd
 
@@ -132,36 +132,36 @@ D:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/pspm_main.v_define.v_s
 D:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/pspm_main.v_define.v_system_clk_rst.v_bist_generator.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_debug_module.v_comp_debounce_dyn.v=0*94414*102800
 D:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/pspm_main.v_define.v_system_clk_rst.v_bist_generator.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_debug_module.v_comp_debounce_dyn.v_interrupt_controller.v=0*110262*119727
 D:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/pspm_main.v_define.v_system_clk_rst.v_bist_generator.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_debug_module.v_comp_debounce_dyn.v_interrupt_controller.v_comparator_block.v=0*148147*159280
-LastVerilogToplevel=pspm_main
-ModifyID=7982
+LastVerilogToplevel=adc_processor_2ac_2dc
+ModifyID=8184
 Version=73
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/analog_modules/rdc/resolver_block.v=0*1612450*1614888
-d:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/pspm_main.v_define.v_system_clk_rst.v_bist_generator.v_multiboot_icap.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_ad7367_multi_mode.v_ad5543_dac_ctrl.v_dac_ad5543_block.v_adc_block.v_adc_processor_2ac_2dc.v_adc_processor_4ac.v_adc_processor_4dc.v_adc_processor_resolver.v_resolver_block.v_debug_module.v_comp_debounce_dyn.v_interrupt_controller.v_comparator_block.v=0*1828551*1854644
+d:/Work_20xx/IT90_COMBAT/Work/PERIPH/PSPM/FPGA/C/pspm/src/pspm_main.v_define.v_system_clk_rst.v_bist_generator.v_multiboot_icap.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_ad7367_multi_mode.v_ad5543_dac_ctrl.v_dac_ad5543_block.v_adc_block.v_adc_processor_2ac_2dc.v_adc_processor_4ac.v_adc_processor_4dc.v_adc_processor_resolver.v_resolver_block.v_debug_module.v_comp_debounce_dyn.v_interrupt_controller.v_comparator_block.v=0*1876591*1902732
 
 [~MFT]
-0=978|0pspm.mgf|1854644|898885
-1=1577|1pspm.mgf|6065440|5909146
-3=1577|3pspm.mgf|3737930|3637992
+0=1002|0pspm.mgf|1902732|926246
+1=1617|1pspm.mgf|6224407|6067870
+3=1617|3pspm.mgf|3839235|3739083
 
 [~U]
-$root=12|0*1807888|
-ad5543_dac_ctrl=12|0*1822514|
-ad7367_multi_mode=12|0*1821207|
-adc_block=12|0*1816778|
-adc_processor_2ac_2dc=12|0*1825666|
-adc_processor_4ac=12|0*1823424|
-adc_processor_4dc=12|0*1824566|
-adc_processor_resolver=12|0*1826938|
-bist_generator=12|0*1811756|
-comp_debounce_dyn=12|0*1828175|
-comparator_block=12|0*1814986|
-dac_ad5543_block=12|0*1820338|
-debug_module=12|0*1813592|
-interrupt_controller=12|0*1816055|
-multiboot_icap=12|0*1814458|
-pspm_main=12|0*1808246||0x10
-resolver_block=12|0*1818881|
-spi_stm32_fpga_bridge=12|0*1812418|
-spi_stm32_multi_word_bridge=12|0*1812966|
-system_clk_rst=12|0*1811160|
+$root=12|0*1855912|
+ad5543_dac_ctrl=12|0*1870554|
+ad7367_multi_mode=12|0*1869247|
+adc_block=12|0*1864818|
+adc_processor_2ac_2dc=12|0*1873706||0x10
+adc_processor_4ac=12|0*1871464|
+adc_processor_4dc=12|0*1872606|
+adc_processor_resolver=12|0*1874978|
+bist_generator=12|0*1859796|
+comp_debounce_dyn=12|0*1876215|
+comparator_block=12|0*1863026|
+dac_ad5543_block=12|0*1868378|
+debug_module=12|0*1861632|
+interrupt_controller=12|0*1864095|
+multiboot_icap=12|0*1862498|
+pspm_main=12|0*1856286||0x10
+resolver_block=12|0*1866921|
+spi_stm32_fpga_bridge=12|0*1860458|
+spi_stm32_multi_word_bridge=12|0*1861006|
+system_clk_rst=12|0*1859200|
 

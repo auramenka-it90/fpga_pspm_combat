@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Parameter xsthdpdir set to d:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\synthesis\xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 TABLE OF CONTENTS
@@ -337,18 +337,19 @@ Synthesizing Unit <multiboot_icap>.
     Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\PSPM\FPGA\C\pspm\src\multiboot_icap.v".
         IMAGE2_ADDR = 24'b000100000000000000000000
     Found 1-bit register for signal <icap_clk_reg>.
+    Found 1-bit register for signal <req_sticky>.
     Found 2-bit register for signal <trig_sync>.
     Found 1-bit register for signal <state>.
     Found 4-bit register for signal <seq_idx>.
     Found 1-bit register for signal <icap_ce_n>.
     Found 3-bit register for signal <div_cnt>.
-    Found 3-bit adder for signal <div_cnt[2]_GND_12_o_add_2_OUT> created at line 55.
-    Found 4-bit adder for signal <seq_idx[3]_GND_12_o_add_11_OUT> created at line 129.
+    Found 3-bit adder for signal <div_cnt[2]_GND_12_o_add_2_OUT> created at line 60.
+    Found 4-bit adder for signal <seq_idx[3]_GND_12_o_add_13_OUT> created at line 156.
     Found 16x16-bit Read Only RAM for signal <raw_icap_data>
     Summary:
 	inferred   1 RAM(s).
 	inferred   2 Adder/Subtractor(s).
-	inferred  12 D-type flip-flop(s).
+	inferred  13 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
 Unit <multiboot_icap> synthesized.
 
@@ -727,8 +728,8 @@ Macro Statistics
  6-bit adder                                           : 1
  8-bit adder                                           : 4
  9-bit adder                                           : 1
-# Registers                                            : 239
- 1-bit register                                        : 81
+# Registers                                            : 240
+ 1-bit register                                        : 82
  10-bit register                                       : 7
  14-bit register                                       : 8
  144-bit register                                      : 1
@@ -915,8 +916,8 @@ Macro Statistics
 # Accumulators                                         : 12
  32-bit updown accumulator                             : 8
  32-bit updown loadable accumulator                    : 4
-# Registers                                            : 3041
- Flip-Flops                                            : 3041
+# Registers                                            : 3042
+ Flip-Flops                                            : 3042
 # Comparators                                          : 30
  1-bit comparator equal                                : 2
  10-bit comparator greater                             : 2
@@ -1083,7 +1084,6 @@ Area constraint is met for block <pspm_main>, final ratio is 104.
 Final Macro Processing ...
 
 Processing Unit <pspm_main> :
-	Found 2-bit shift register for signal <u_multiboot/trig_sync_1>.
 INFO:Xst:741 - HDL ADVISOR - A 8-bit shift register was found for signal <u_sys_clk_rst/sync_reg_7> and currently occupies 8 logic cells (4 slices). Removing the set/reset logic would take advantage of SRL32 (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.
 Unit <pspm_main> processed.
 
@@ -1091,10 +1091,8 @@ Unit <pspm_main> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 3625
- Flip-Flops                                            : 3625
-# Shift Registers                                      : 1
- 2-bit shift register                                  : 1
+# Registers                                            : 3628
+ Flip-Flops                                            : 3628
 
 =========================================================================
 
@@ -1117,11 +1115,11 @@ Top Level Output File Name         : pspm_main.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 5022
+# BELS                             : 5023
 #      GND                         : 1
 #      INV                         : 80
 #      LUT1                        : 157
-#      LUT2                        : 174
+#      LUT2                        : 175
 #      LUT3                        : 441
 #      LUT4                        : 357
 #      LUT5                        : 480
@@ -1130,17 +1128,15 @@ Primitive and Black Box Usage:
 #      MUXF7                       : 46
 #      VCC                         : 1
 #      XORCY                       : 801
-# FlipFlops/Latches                : 3626
+# FlipFlops/Latches                : 3628
 #      FD                          : 14
 #      FDC                         : 1
-#      FDE                         : 9
+#      FDE                         : 8
 #      FDP                         : 8
-#      FDR                         : 169
+#      FDR                         : 172
 #      FDRE                        : 3380
 #      FDS                         : 15
 #      FDSE                        : 30
-# Shift Registers                  : 1
-#      SRLC16E                     : 1
 # Clock Buffers                    : 3
 #      BUFG                        : 3
 # IO Buffers                       : 65
@@ -1160,18 +1156,16 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            3626  out of  11440    31%  
+ Number of Slice Registers:            3628  out of  11440    31%  
  Number of Slice LUTs:                 3340  out of   5720    58%  
-    Number used as Logic:              3339  out of   5720    58%  
-    Number used as Memory:                1  out of   1440     0%  
-       Number used as SRL:                1
+    Number used as Logic:              3340  out of   5720    58%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   5250
-   Number with an unused Flip Flop:    1624  out of   5250    30%  
-   Number with an unused LUT:          1910  out of   5250    36%  
-   Number of fully used LUT-FF pairs:  1716  out of   5250    32%  
-   Number of unique control sets:       109
+ Number of LUT Flip Flop pairs used:   5252
+   Number with an unused Flip Flop:    1624  out of   5252    30%  
+   Number with an unused LUT:          1912  out of   5252    36%  
+   Number of fully used LUT-FF pairs:  1716  out of   5252    32%  
+   Number of unique control sets:       108
 
 IO Utilization: 
  Number of IOs:                          65
@@ -1201,7 +1195,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk_60mHz                          | DCM_SP:CLKFX           | 3615  |
+clk_60mHz                          | DCM_SP:CLKFX           | 3616  |
 clk_60mHz                          | IBUFG                  | 4     |
 u_multiboot/icap_clk_reg           | BUFG                   | 8     |
 -----------------------------------+------------------------+-------+
@@ -1226,7 +1220,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_60mHz'
   Clock period: 21.169ns (frequency: 47.240MHz)
-  Total number of paths / destination ports: 639030 / 10609
+  Total number of paths / destination ports: 639033 / 10611
 -------------------------------------------------------------------------
 Delay:               12.701ns (Levels of Logic = 9)
   Source:            u_spi_config/addr_8 (FF)
@@ -1381,19 +1375,19 @@ Clock to Setup on destination clock u_multiboot/icap_clk_reg
                         | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------+---------+---------+---------+---------+
-clk_60mHz               |    5.354|         |         |         |
+clk_60mHz               |    5.355|         |         |         |
 u_multiboot/icap_clk_reg|    2.807|         |         |         |
 ------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.27 secs
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 12.70 secs
  
 --> 
 
-Total memory usage is 4546180 kilobytes
+Total memory usage is 4546300 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    3 (   0 filtered)

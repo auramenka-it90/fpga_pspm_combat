@@ -7,8 +7,13 @@
 //  Internal Configuration Access Port (ICAP) MultiBoot Controller for Spartan-6.
 //  Clocks ICAP_SPARTAN6 primitive at a safe 10.0 MHz (Max limit is 20 MHz per DS162).
 //
-//  Target Silicon: Xilinx Spartan-6 (XC6SLX...)
-//  Toolchain:      ISE 14.7 / XST (0 Timing Errors, Timing Score = 0)
+//  CDC Architecture:
+//   - Uses a 100 MHz Sticky Flag (req_sticky) to latch the 1-cycle trigger pulse.
+//   - Synchronizes the static level into the 10.0 MHz domain via 2-stage FF.
+//   - Self-contained: Resets on system 'rst' or upon FPGA IPROG hardware reload.
+//
+//  Target Silicon: Xilinx Spartan-6 (XC6SLX4 / XC6SLX9-TQG144)
+//  Toolchain:      Aldec Active-HDL 9.2 / ISE 14.7 / XST
 //  All comments in ASCII English.
 // =============================================================================
 
@@ -17,7 +22,7 @@ module multiboot_icap #(
 )(
     input  wire clk,     // System Clock (100 MHz)
     input  wire rst,     // Synchronous Reset (Active High)
-    input  wire trigger  // 1-cycle pulse to trigger IPROG reboot
+    input  wire trigger  // 1-cycle pulse from debug_module (100 MHz domain)
 );
 
     // =========================================================================
@@ -64,6 +69,35 @@ module multiboot_icap #(
     );
 
     // =========================================================================
+    // CDC PULSE-TO-LEVEL CONVERTER (100 MHz Clock Domain)
+    // Converts 1-cycle (10 ns) trigger into a sticky level to prevent CDC drops.
+    // =========================================================================
+    reg req_sticky;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            req_sticky <= 1'b0;
+        end else if (trigger) begin
+            req_sticky <= 1'b1; // Latched until FPGA reboots or system reset occurs
+        end
+    end
+
+    // =========================================================================
+    // CDC 2-STAGE SYNCHRONIZER (10.0 MHz ICAP Clock Domain)
+    // =========================================================================
+    reg [1:0] trig_sync;
+
+    always @(posedge icap_clk) begin
+        if (rst) begin
+            trig_sync <= 2'b00;
+        end else begin
+            trig_sync <= {trig_sync[0], req_sticky};
+        end
+    end
+
+    wire trig_10mhz = trig_sync[1];
+
+    // =========================================================================
     // IPROG SEQUENCE ROM (13 Words Total - Parameterized Direct Constants)
     // =========================================================================
     reg [3:0]  seq_idx;
@@ -96,13 +130,6 @@ module multiboot_icap #(
 
     reg state;
     reg icap_ce_n;
-
-    // Trigger edge synchronizer across 10 MHz domain
-    reg [1:0] trig_sync;
-    always @(posedge icap_clk) begin
-        trig_sync <= {trig_sync[0], trigger};
-    end
-    wire trig_10mhz = trig_sync[1];
 
     always @(posedge icap_clk) begin
         if (rst) begin
